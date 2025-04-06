@@ -1,0 +1,65 @@
+{
+    "builds": [
+      {
+        "src": "app.py",
+        "use": "@vercel/python"
+      },
+      {
+        "src": "frontend/package.json",
+        "use": "@vercel/static-build",
+        "config": {
+          "distDir": "frontend/dist"
+        }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/sitemap.xml",
+        "dest": "app.py"
+      },
+      {
+        "src": "/api/(.*)",
+        "dest": "app.py"
+      },
+      {
+        "src": "/login",
+        "dest": "app.py"
+      },
+      {
+        "src": "/logout",
+        "dest": "app.py"
+      },
+      {
+        "src": "/callback",
+        "dest": "app.py"
+      },
+      {
+        "src": "/process_login",
+        "dest": "app.py"
+      },
+      {
+        "src": "/login/authorized",
+        "dest": "app.py"
+      },
+      {
+        "src": "/problem/(.*)",
+        "dest": "app.py"
+      },
+      {
+        "src": "/latest_oa/(.*)",
+        "dest": "app.py"
+      },
+      {
+        "src": "/static/js/(.*)",
+        "dest": "/js/$1"
+      },
+      {
+        "src": "/static/css/(.*)",
+        "dest": "/css/$1"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "frontend/dist/$1"
+      }
+    ]
+  }

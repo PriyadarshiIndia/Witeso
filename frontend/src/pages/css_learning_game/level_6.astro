@@ -1,0 +1,796 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout
+    title="CSS Learning Game - Level 6"
+    meta_description="Play and learn CSS with our interactive game designed for beginners. Test your skills and improve your knowledge of CSS in a fun way."
+    meta_keywords="CSS game, learn CSS, interactive CSS game, CSS for beginners, play and learn CSS"
+>
+<style>
+    /* Reset and base styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        background-color: #f0f4f8;
+        color: #333;
+        min-height: 100vh;
+    }
+
+    /* Main layout */
+    .game-container {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .main-content {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        padding: 1rem;
+        padding-top: 100px;
+    }
+
+    /* Game sections */
+    .game-sections {
+        display: flex;
+        flex: 1;
+        gap: 1.5rem;
+        flex-direction: column;
+    }
+
+    @media (min-width: 768px) {
+        .game-sections {
+            flex-direction: row;
+        }
+    }
+
+    /* Code editor side */
+    .editor-section {
+        flex: 1;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .editor-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .editor-header h2 {
+        font-size: 1.5rem;
+        color: #10b981;
+    }
+
+    .level-indicator {
+        background-color: #d1fae5;
+        color: #047857;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-weight: bold;
+    }
+
+    .editor-container {
+        background-color: #f8fafc;
+        border-radius: 8px;
+        border: 1px solid #e2e8f0;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        flex: 1;
+    }
+
+    .editor-instructions {
+        background-color: #ecfdf5;
+        border-left: 4px solid #10b981;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 0 8px 8px 0;
+    }
+
+    .editor-instructions h3 {
+        color: #047857;
+        margin-bottom: 0.5rem;
+    }
+
+    .editor-instructions p {
+        color: #064e3b;
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    #cssInput {
+        width: 100%;
+        height: 150px;
+        padding: 1rem;
+        border: none;
+        background-color: #1e293b;
+        color: #e2e8f0;
+        border-radius: 8px;
+        font-family: 'Courier New', monospace;
+        font-size: 0.9rem;
+        resize: none;
+        margin-bottom: 1rem;
+        line-height: 1.5;
+    }
+
+    #cssInput::placeholder {
+        color: #64748b;
+    }
+
+    .editor-buttons {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .btn {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+        background-color: #10b981;
+        color: white;
+        box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
+    }
+
+    .btn-primary:hover {
+        background-color: #059669;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 8px rgba(16, 185, 129, 0.3);
+    }
+
+    .btn-secondary {
+        background-color: #e2e8f0;
+        color: #475569;
+    }
+
+    .btn-secondary:hover {
+        background-color: #cbd5e1;
+    }
+
+    /* Game preview side */
+    .preview-section {
+        flex: 1;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .preview-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .preview-header h2 {
+        font-size: 1.5rem;
+        color: #10b981;
+    }
+
+    .timer {
+        background-color: #d1fae5;
+        color: #047857;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-weight: bold;
+    }
+
+    #gameArea {
+        flex: 1;
+        background: linear-gradient(to bottom, #ecfdf5, #d1fae5);
+        border-radius: 8px;
+        position: relative;
+        overflow: hidden;
+        min-height: 300px;
+        border: 1px solid #a7f3d0;
+        padding: 20px;
+    }
+
+    /* Stacking context container */
+    #stackContainer {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    /* Stackable items */
+    .stack-item {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+        color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .stack-item:hover {
+        transform: scale(1.05);
+    }
+
+    .stack-item:nth-child(1) {
+        background-color: #ef4444;
+        top: 20px;
+        left: 20px;
+    }
+
+    .stack-item:nth-child(2) {
+        background-color: #f59e0b;
+        top: 40px;
+        left: 40px;
+    }
+
+    .stack-item:nth-child(3) {
+        background-color: #10b981;
+        top: 60px;
+        left: 60px;
+    }
+
+    .stack-item:nth-child(4) {
+        background-color: #3b82f6;
+        top: 80px;
+        left: 80px;
+    }
+
+    /* Target layout indicator */
+    #targetLayout {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 120px;
+        height: 120px;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    #targetLayout .target-box {
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1rem;
+        color: white;
+    }
+
+    .target-box:nth-child(1) {
+        background-color: #3b82f6;
+        top: 10px;
+        left: 10px;
+    }
+
+    .target-box:nth-child(2) {
+        background-color: #10b981;
+        top: 20px;
+        left: 20px;
+    }
+
+    .target-box:nth-child(3) {
+        background-color: #f59e0b;
+        top: 30px;
+        left: 30px;
+    }
+
+    .target-box:nth-child(4) {
+        background-color: #ef4444;
+        top: 40px;
+        left: 40px;
+    }
+
+    /* Message styles */
+    #message {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 0.75rem 1.5rem;
+        border-radius: 30px;
+        font-weight: bold;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 100;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .message-success {
+        background-color: #dcfce7;
+        color: #166534;
+    }
+
+    .message-error {
+        background-color: #fee2e2;
+        color: #b91c1c;
+    }
+
+    .message-visible {
+        opacity: 1 !important;
+    }
+
+    /* Hints panel */
+    .hints-panel {
+        background-color: #f8fafc;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+
+    .hints-panel h3 {
+        color: #10b981;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .hints-panel h3 svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .hints-panel ul {
+        list-style-type: none;
+        padding-left: 1.5rem;
+    }
+
+    .hints-panel li {
+        margin-bottom: 0.5rem;
+        font-family: 'Courier New', monospace;
+        color: #475569;
+        font-size: 0.9rem;
+    }
+
+    .hints-panel li::before {
+        content: "→";
+        margin-right: 0.5rem;
+        color: #10b981;
+    }
+
+    /* Confetti animation */
+    .confetti {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        opacity: 1;
+        animation: fall 3s ease-out forwards;
+        z-index: 20;
+    }
+
+    @keyframes fall {
+        0% {
+            transform: translateY(-50px) rotate(0deg);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(400px) rotate(360deg);
+            opacity: 0;
+        }
+    }
+
+    /* Progress bar */
+    .progress-container {
+        width: 100%;
+        height: 8px;
+        background-color: #e2e8f0;
+        border-radius: 4px;
+        margin-top: 1rem;
+        overflow: hidden;
+    }
+
+    .progress-bar {
+        height: 100%;
+        background: linear-gradient(90deg, #10b981, #047857);
+        width: 0%;
+        transition: width 0.5s ease;
+        border-radius: 4px;
+    }
+
+    /* Stack order indicator */
+    .order-indicator {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+    }
+</style>
+<div class="game-container">
+
+    <main class="main-content">
+        <div class="game-sections">
+            <!-- Code Editor Side -->
+            <section class="editor-section">
+                <div class="editor-header">
+                    <h2>Z-Index Master</h2>
+                    <div class="level-indicator">Level 6</div>
+                    <div class="navigation-buttons">
+                        <a href="/css_learning_game/level_5" id="prevLevelButton" class="btn btn-secondary">← Previous</a>
+                        <a  id="nextLevelButton" class="disabled opacity-20 btn btn-primary">Next →</a>
+                    </div>
+                </div>
+
+                <div class="editor-instructions">
+                    <h3>Mission</h3>
+                    <p>Make the blue box appear on top of all other boxes using z-index.</p>
+                </div>
+
+                <div class="editor-container">
+                    <textarea id="cssInput" placeholder="/* Write your CSS here */
+/* Example for blue box (box4):
+z-index: 10;
+*/
+.box1 {
+/* Red box styles */
+}
+
+.box2 {
+/* Yellow box styles */
+}
+
+.box3 {
+/* Green box styles */
+}
+
+.box4 {
+/* Blue box styles */
+z-index: 10;
+}"></textarea>
+                    
+                    <div class="editor-buttons">
+                        <button id="applyButton" class="btn btn-primary">Apply CSS</button>
+                        <button id="resetButton" class="btn btn-secondary">Reset</button>
+                    </div>
+                </div>
+
+                <div class="hints-panel">
+                    <h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                        About Z-Index
+                    </h3>
+                    <ul>
+                        <li>z-index controls stacking order of positioned elements</li>
+                        <li>Higher values appear on top of lower values</li>
+                        <li>Only works on elements with position: absolute, relative, fixed, or sticky</li>
+                        <li>Elements with same z-index stack in HTML order (last appears on top)</li>
+                        <li>Negative values can place elements behind parent</li>
+                    </ul>
+                </div>
+
+                <div class="progress-container">
+                    <div id="progressBar" class="progress-bar" style="width: 0%"></div>
+                </div>
+            </section>
+
+            <!-- Game Preview Side -->
+            <section class="preview-section">
+                <div class="preview-header">
+                    <h2>Game Preview</h2>
+                    <div id="timerDisplay" class="timer">02:00</div>
+                </div>
+
+                <div id="gameArea">
+                    <!-- Target layout indicator -->
+                    <div id="targetLayout">
+                        <div class="target-box" style="z-index: 4;">4</div>
+                        <div class="target-box" style="z-index: 3;">3</div>
+                        <div class="target-box" style="z-index: 2;">2</div>
+                        <div class="target-box" style="z-index: 1;">1</div>
+                    </div>
+                    
+                    <!-- Stacking context container -->
+                    <div id="stackContainer">
+                        <div class="stack-item box1">1</div>
+                        <div class="stack-item box2">2</div>
+                        <div class="stack-item box3">3</div>
+                        <div class="stack-item box4">4</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div id="message">Message goes here</div>
+
+</div>
+
+<script>
+    // Game variables
+    let timeLeft = 120;
+    let timerInterval;
+    let currentLevel = 6;
+    let progress = 0;
+    
+    // DOM Elements
+    const cssInput = document.getElementById('cssInput');
+    const stackItems = document.querySelectorAll('.stack-item');
+    const message = document.getElementById('message');
+    const timerDisplay = document.getElementById('timerDisplay');
+    const progressBar = document.getElementById('progressBar');
+    const applyButton = document.getElementById('applyButton');
+    const resetButton = document.getElementById('resetButton');
+    const gameArea = document.getElementById('gameArea');
+    const targetLayout = document.getElementById('targetLayout');
+    
+    // Level configurations
+    const levels = [
+        {
+            instructions: "Make the blue box (box4) appear on top of all other boxes using z-index.",
+            targetOrder: [1, 3, 4, 2], // Blue, Green, Yellow, Red
+            targetImage: ""
+        },
+        {
+            instructions: "Make the red box (box1) appear on top and green box (box3) second.",
+            targetOrder: [1, 3, 4, 2], // Red, Green, Blue, Yellow
+            targetImage: ""
+        },
+        {
+            instructions: "Create a sandwich with yellow box (box2) on top and bottom, and others in middle.",
+            targetOrder: [2, 1, 3, 2], // Yellow, Red, Green, Yellow
+            targetImage: ""
+        },
+        {
+            instructions: "Make the green box (box3) appear behind all others (negative z-index).",
+            targetOrder: [1, 2, 4, 3], // Red, Yellow, Blue, Green
+            targetImage: ""
+        }
+    ];
+    
+    // Initialize the game
+    function initGame() {
+        resetTimer();
+        resetStackItems();
+        updateProgressBar(0);
+        loadLevel(currentLevel);
+        
+        // Event listeners
+        applyButton.addEventListener('click', applyCSS);
+        resetButton.addEventListener('click', resetStackItems);
+    }
+    
+    // Load level
+    function loadLevel(levelNum) {
+        const level = levels[levelNum - 1];
+        document.querySelector('.editor-instructions p').textContent = level.instructions;
+        document.querySelector('.level-indicator').textContent = `Level ${levelNum}`;
+        
+        // Update target layout preview
+        updateTargetLayoutPreview(level.targetOrder);
+    }
+    
+    // Update target layout preview
+    function updateTargetLayoutPreview(order) {
+        const targetBoxes = targetLayout.querySelectorAll('.target-box');
+        
+        // Reset all z-indexes
+        targetBoxes.forEach(box => {
+            box.style.zIndex = '0';
+            box.textContent = '';
+        });
+        
+        // Set new order (from top to bottom)
+        order.forEach((boxNum, index) => {
+            const zIndex = order.length - index; // Higher for items that should be on top
+            targetBoxes[boxNum - 1].style.zIndex = zIndex;
+            targetBoxes[boxNum - 1].textContent = boxNum;
+        });
+    }
+    
+    // Apply CSS from the input
+    function applyCSS() {
+        const css = cssInput.value;
+        
+        try {
+            // Parse the CSS and apply to each box
+            const rules = css.split('}');
+            
+            rules.forEach(rule => {
+                if (rule.trim()) {
+                    const parts = rule.split('{');
+                    const selector = parts[0].trim();
+                    const styles = parts[1] ? parts[1].trim() : '';
+                    
+                    if (selector && styles) {
+                        const element = document.querySelector(selector);
+                        if (element) {
+                            element.style = styles;
+                        }
+                    }
+                }
+            });
+            
+            hideMessage();
+            
+            // Check if the stacking order matches the target
+            checkStackOrder();
+            
+        } catch (error) {
+            showMessage('❌ Invalid CSS Property', 'error');
+        }
+    }
+    
+    // Check if the stacking order matches the target
+    function checkStackOrder() {
+        const level = levels[currentLevel - 1];
+        const targetOrder = level.targetOrder;
+        
+        // Get current stacking order (from top to bottom)
+        const currentOrder = Array.from(stackItems)
+            .sort((a, b) => {
+                const aZ = parseInt(window.getComputedStyle(a).zIndex) || 0;
+                const bZ = parseInt(window.getComputedStyle(b).zIndex) || 0;
+                return bZ - aZ; // Sort descending
+            })
+            .map(box => parseInt(box.textContent));
+        
+        // Check if the orders match
+        let isCorrect = true;
+        
+        // We only check the first 4 items (since level 3 has duplicate)
+        for (let i = 0; i < targetOrder.length; i++) {
+            if (currentOrder[i] !== targetOrder[i]) {
+                isCorrect = false;
+                break;
+            }
+        }
+        
+        if (isCorrect) {
+            levelComplete();
+        }
+    }
+    
+    // Level complete
+    function levelComplete() {
+        clearInterval(timerInterval);
+        showMessage('🎉 Success! Level Complete!', 'success');
+        createConfetti();
+        
+        // Update progress
+        progress += 25; // Four levels, so 25% per level
+        updateProgressBar(progress);
+        
+        // Prepare for next level
+        setTimeout(() => {
+            if (currentLevel < levels.length) {
+                currentLevel++;
+                loadLevel(currentLevel);
+                resetStackItems();
+                resetTimer();
+            } else {
+                // Game complete
+                showMessage('🏆 Congratulations! You completed all levels!', 'success');
+                updateProgressBar(100);
+            }
+        }, 3000);
+    }
+    
+    // Reset the stack items
+    function resetStackItems() {
+        stackItems.forEach(box => {
+            box.style = '';
+        });
+        cssInput.value = '';
+        hideMessage();
+    }
+    
+    // Timer functions
+    function resetTimer() {
+        clearInterval(timerInterval);
+        timeLeft = 120;
+        updateTimerDisplay();
+        
+        timerInterval = setInterval(() => {
+            timeLeft--;
+            updateTimerDisplay();
+            
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                showMessage('⏰ Time\'s up! Try again.', 'error');
+            }
+        }, 1000);
+    }
+    
+    function updateTimerDisplay() {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+    
+    // Show message
+    function showMessage(text, type) {
+        message.textContent = text;
+        message.className = type === 'success' ? 'message-success' : 'message-error';
+        message.classList.add('message-visible');
+        
+        setTimeout(() => {
+            hideMessage();
+        }, 3000);
+    }
+    
+    // Hide message
+    function hideMessage() {
+        message.classList.remove('message-visible');
+    }
+    
+    // Update progress bar
+    function updateProgressBar(value) {
+        progressBar.style.width = `${value}%`;
+    }
+    
+    // Create confetti effect
+    function createConfetti() {
+        const colors = ['#10b981', '#047857', '#a7f3d0', '#6ee7b7', '#34d399'];
+        
+        // Remove any existing confetti
+        document.querySelectorAll('.confetti').forEach(el => el.remove());
+        
+        for (let i = 0; i < 50; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = `${Math.random() * 100}%`;
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.width = `${Math.random() * 10 + 5}px`;
+            confetti.style.height = `${Math.random() * 10 + 5}px`;
+            confetti.style.animationDuration = `${Math.random() * 2 + 2}s`;
+            confetti.style.animationDelay = `${Math.random() * 0.5}s`;
+            gameArea.appendChild(confetti);
+            
+            // Remove confetti after animation
+            setTimeout(() => {
+                if (confetti.parentNode) {
+                    confetti.parentNode.removeChild(confetti);
+                }
+            }, 3000);
+        }
+    }
+    
+    // Initialize the game when the page loads
+    window.addEventListener('load', initGame);
+</script>
+</Layout>

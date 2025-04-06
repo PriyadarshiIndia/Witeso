@@ -1,0 +1,18 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import TestContainer from '../../../components/Mock_Test/TestContainer.jsx';
+
+const baseUrl = import.meta.env.DEV ? "http://127.0.0.1:5000" : import.meta.env.PUBLIC_API_URL;
+const baseURL = `${baseUrl}/api/aptitude_questions`;
+const category = Astro.params.category;
+const subcategory = Astro.params.subcategory;
+const title = `${category.replace('_', ' ')} - ${subcategory.replace('_', ' ')}`;
+let data = {};
+
+const response = await fetch(`${baseURL}?category=${category?.replace('-', '_')}&subcategory=${subcategory}`);
+data = await response.json();
+---
+
+<Layout title={title}>
+  <TestContainer client:load questions={data.problems || []} test_title={data.category.replace('_', ' ').toUpperCase() + " ( " + data.subcategory + " ) "} />
+</Layout>

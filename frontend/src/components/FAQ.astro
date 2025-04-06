@@ -1,0 +1,89 @@
+<section id="faq" class="py-20 bg-neutral-900">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-white mb-4 animate__animated animate__fadeIn">Frequently Asked Questions</h2>
+        <p class="text-lg text-gray-300 max-w-2xl mx-auto animate__animated animate__fadeIn">Find answers to common
+          questions about Witeso</p>
+      </div>
+
+      <div class="max-w-3xl mx-auto">
+        <div class="space-y-4">
+          <div class="faq-item bg-neutral-800 rounded-lg border border-neutral-700 animate__animated animate__fadeInUp">
+            <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center">
+              <span class="text-white font-semibold">What is Witeso?</span>
+              <svg class="w-6 h-6 text-green-500 transform transition-transform duration-200" fill="none"
+                stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div class="faq-answer px-6 pb-4 text-gray-300 hidden">
+              Witeso is a comprehensive learning platform for Data Structures and Algorithms. It offers structured
+              problem-solving, detailed explanations, and a supportive community to help you master DSA concepts.
+            </div>
+          </div>
+
+          <div class="faq-item bg-neutral-800 rounded-lg border border-neutral-700 animate__animated animate__fadeInUp">
+            <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center">
+              <span class="text-white font-semibold">How do I get started?</span>
+              <svg class="w-6 h-6 text-green-500 transform transition-transform duration-200" fill="none"
+                stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div class="faq-answer px-6 pb-4 text-gray-300 hidden">
+              Simply sign up for a free account, choose your preferred programming language, and start with the
+              beginner-friendly problems. Our structured learning path will guide you through increasingly challenging
+              concepts.
+            </div>
+          </div>
+
+          <div class="faq-item bg-neutral-800 rounded-lg border border-neutral-700 animate__animated animate__fadeInUp">
+            <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center">
+              <span class="text-white font-semibold">What programming languages are supported?</span>
+              <svg class="w-6 h-6 text-green-500 transform transition-transform duration-200" fill="none"
+                stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div class="faq-answer px-6 pb-4 text-gray-300 hidden">
+              We support all major programming languages including Java, Python, C++, JavaScript, and more. You can
+              switch between languages at any time while solving problems.
+            </div>
+          </div>
+
+          <div class="faq-item bg-neutral-800 rounded-lg border border-neutral-700 animate__animated animate__fadeInUp">
+            <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center">
+              <span class="text-white font-semibold">Can I access solutions to problems?</span>
+              <svg class="w-6 h-6 text-green-500 transform transition-transform duration-200" fill="none"
+                stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div class="faq-answer px-6 pb-4 text-gray-300 hidden">
+              Yes, platform is completely free to use. You can access solutions to all problems.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.querySelectorAll('.faq-button').forEach(button => {
+        button.addEventListener('click', () => {
+          const faqItem = button.parentElement;
+          const answer = faqItem.querySelector('.faq-answer');
+          const icon = button.querySelector('svg');
+
+          answer.classList.toggle('hidden');
+          icon.style.transform = answer.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+
+          document.querySelectorAll('.faq-item').forEach(item => {
+            if (item !== faqItem) {
+              item.querySelector('.faq-answer').classList.add('hidden');
+              item.querySelector('svg').style.transform = 'rotate(0deg)';
+            }
+          });
+        });
+      });
+    </script>
+  </section>

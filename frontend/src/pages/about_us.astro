@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Hero from '../components/AboutUs/Hero.astro'
+import Mission from '../components/AboutUs/Mission.astro'
+import OurServices from '../components/AboutUs/OurServices.astro'
+import Impact from '../components/AboutUs/Impact.astro'
+---
+<style>
+    .about_us h1, .about_us h2, .about_us h3, .about_us h4, .about_us h5, .about_us h6 {
+      font-family: Inter, sans-serif, Inter, system-ui, sans-serif;
+    }
+    .about_us {
+      font-family: Poppins, sans-serif, Inter, system-ui, sans-serif;
+    }
+</style>
+<Layout title="About Us | Witeso">
+    <div class="about_us pt-10">
+        <Hero />
+        <Mission />
+        <OurServices />
+        <Impact />
+    </div>  
+</Layout>

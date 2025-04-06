@@ -1,0 +1,79 @@
+---
+const categories = [
+  {
+    title: "Arithmetic Aptitude",
+    description: "Master basic arithmetic concepts and problem-solving techniques.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+    </svg>`,
+  },
+  {
+    title: "Data Interpretation",
+    description: "Learn to analyze and interpret data from charts, graphs, and tables.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+    </svg>`,
+  },
+  {
+    title: "Verbal Ability",
+    description: "Enhance your vocabulary, grammar, and comprehension skills.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+    </svg>`,
+  },
+  {
+    title: "Logical Reasoning",
+    description: "Develop critical thinking and problem-solving skills.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+    </svg>`,
+  },
+  {
+    title: "Verbal Reasoning",
+    description: "Improve your ability to analyze and reason using written information.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+    </svg>`,
+  },
+  {
+    title: "Non-Verbal Reasoning",
+    description: "Sharpen your ability to analyze visual information and patterns.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+    </svg>`,
+  },
+];
+---
+
+<!-- Main Container -->
+<div class="bg-gray-50 py-12" id="learn-aptitude">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Heading -->
+    <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">
+      Explore Our Aptitude Categories
+    </h2>
+
+    <!-- Cards Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {categories.map((category) => (
+        <div class="bg-white p-6 rounded-xl p-8 border-2 border-green-500 shadow-lg hover:shadow-xl hover:border-green-400 transition duration-300">
+          <div class="flex flex-col items-center text-center">
+            <!-- Icon -->
+            <div class="mb-4" set:html={category.icon}></div>
+            <!-- Title -->
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">
+              {category.title}
+            </h3>
+            <!-- Description -->
+            <p class="text-gray-600">
+              {category.description}
+            </p>
+          </div>
+          <a href=`/company_aptitude_mock_test/${category.title.toLowerCase().replace(' ', '_')}` class="block bg-green-500 text-white text-center mt-4 py-2 px-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+            Start Learning
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

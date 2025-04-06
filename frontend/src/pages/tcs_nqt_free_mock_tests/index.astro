@@ -1,0 +1,29 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Hero from "../../components/TCS_NQT/Hero.astro";
+import TestCategories from "../../components/TCS_NQT/TestCategories.astro";
+import PerformanceAnalysis from "../../components/TCS_NQT/PerformanceAnalysis.astro";
+import Testimonials from "../../components/TCS_NQT/Testimonials.astro";
+---
+
+<style>
+    .tcs_nqt {
+      font-family: Roboto, sans-serif, Inter, system-ui, sans-serif;
+    }
+    .tcs_nqt h1,
+    .tcs_nqt h2,
+    .tcs_nqt h3,
+    .tcs_nqt h4,
+    .tcs_nqt h5,
+    .tcs_nqt h6 {
+      font-family: Poppins, sans-serif, Inter, system-ui, sans-serif;
+    }
+  </style>
+<Layout title="TCS NQT Free Mock Tests">
+    <div class="tcs_nqt">
+        <Hero />
+        <TestCategories />
+        <PerformanceAnalysis />
+        <Testimonials />
+    </div>
+</Layout>

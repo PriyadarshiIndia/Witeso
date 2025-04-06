@@ -1,0 +1,14 @@
+<form action="/api/subscribe" method="post">
+    <input type="email" name="email" placeholder="Enter Email" required>
+    <select name="currency">
+        {% for currency in currencies %}
+            <option value="{{ currency }}">{{ currency }}</option>
+        {% endfor %}
+    </select>
+    <select name="plan">
+        <option value="1_month">1 Month</option>
+        <option value="6_months">6 Months</option>
+        <option value="12_months">12 Months</option>
+    </select>
+    <button type="submit">Subscribe</button>
+</form>

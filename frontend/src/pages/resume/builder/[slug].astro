@@ -1,0 +1,28 @@
+---
+import ResumeBuilder from '../../../components/ResumeBuilder/ResumeBuilder.astro';
+import Layout from '../../../layouts/Layout.astro';
+---
+<Layout 
+  title="Create Overleaf ATS Friendly Resumes"
+>
+  <div class="relative bg-gray-100" style="background-image: url('/images/resume_builder_bg.jpg'); background-size: cover; background-position: center;">
+    <!-- Opacity Layer -->
+    <div class="absolute inset-0 bg-black opacity-10"></div>
+      <div class="relative container mx-auto p-4 pt-30">
+        <div class="flex flex-col md:flex-row gap-4">
+        <!-- Left Half: Form Input -->
+        <div class="md:w-1/2 bg-white p-6 rounded shadow">
+          <h1 class="text-2xl font-bold mb-4">Resume Builder</h1>
+          <ResumeBuilder />
+        </div>
+        <!-- Right Half: PDF Preview -->
+        <div class="md:w-1/2 bg-white p-6 rounded shadow">
+          <h2 class="text-xl font-semibold mb-4">Preview</h2>
+          <div id="pdf-viewer" class="border border-gray-300 h-[600px]">
+            <iframe id="pdfFrame" class="w-full h-full" src="" style="width: 100%; height: 100%;"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

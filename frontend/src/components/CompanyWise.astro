@@ -1,0 +1,53 @@
+---
+const baseUrl = import.meta.env.DEV ? "http://127.0.0.1:5000" : import.meta.env.PUBLIC_API_URL;
+const response = await fetch(`${baseUrl}/api/top_6_companies`);
+const companies = await response.json();
+---
+
+<section id="companywise" class="py-20 bg-neutral-900">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-white mb-4 animate__animated animate__fadeIn">
+        Company Wise DSA Problems
+      </h2>
+      <p class="text-lg text-gray-300 max-w-2xl mx-auto animate__animated animate__fadeIn">
+        Comprehensive Coverage of Company-Wise DSA Problems
+      </p>
+    </div>
+
+    <!-- Grid for Company Cards -->
+    <div id="companyGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {companies.map((company) => (
+        <a href={`/company_wise_dsa/${company.name.toLowerCase()}`} class="company-card block" key={company.name}>
+          <div class="bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-green-500 transition-all cursor-pointer group animate__animated animate__fadeInUp">
+            <div class="flex items-center gap-4 mb-4">
+              <img src={company.logo} alt={`${company.name} Logo`} class="w-12 h-12 object-contain" />
+                <h3 class="text-xl font-bold text-white company-name">{company.name.charAt(0).toUpperCase() + company.name.slice(1)}</h3>
+            </div>
+            <p class="text-gray-400 mb-4">{company.total} Questions</p>
+            <div class="flex gap-2">
+              <span class="px-3 py-1 bg-green-500/10 text-green-500 rounded-full text-sm">
+                Easy: {company.easy_count}
+              </span>
+              <span class="px-3 py-1 bg-yellow-500/10 text-yellow-500 rounded-full text-sm">
+                Medium: {company.medium_count}
+              </span>
+              <span class="px-3 py-1 bg-red-500/10 text-red-500 rounded-full text-sm">
+                Hard: {company.hard_count}
+              </span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div class="mt-16 text-center">
+      <button
+        onclick="window.location.href='/company_wise_dsa_questions'"
+        class="border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-white px-6 sm:px-8 py-3 rounded-lg font-semibold transition"
+      >
+        Explore More Companies Problems
+      </button>
+    </div>
+  </div>
+</section>

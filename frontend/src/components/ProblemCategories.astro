@@ -1,0 +1,241 @@
+---
+// Fetch data from your API (ensure SSR is enabled or adjust if using client-side fetching)
+// Use the DEV environment flag to determine the base URL
+const baseUrl = import.meta.env.DEV ? "http://127.0.0.1:5000" : import.meta.env.PUBLIC_API_URL;
+const response = await fetch(`${baseUrl}/api/problems`);
+const data = await response.json();
+
+// Assume the API returns an object like:
+// { problems: [ { Category, Difficulty, Subcategory, Problem, problem_slug, ... }, ... ],
+//   striver_plus_ques_list: { "Problem Name": "link", ... } }
+const problems = data.problems || [];
+const striver_plus_ques_list = data.striver_plus_ques_list || {};
+
+// Group problems by category
+const categories = {};
+for (const problem of problems) {
+  if (!categories[problem.Category]) {
+    categories[problem.Category] = [];
+  }
+  categories[problem.Category].push(problem);
+}
+---
+
+<section id="problemCategories" class="py-20 bg-neutral-900">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-white mb-4 animate__animated animate__fadeIn">Problem Categories</h2>
+      <p class="text-lg text-gray-300 max-w-2xl mx-auto animate__animated animate__fadeIn">
+        Comprehensive coverage of all important DSA topics
+      </p>
+    </div>
+
+    <!-- Grid for Problem Categories -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {Object.entries(categories).map(([category, problemsInCategory], index) => {
+        // Count difficulties
+        const easyCount = problemsInCategory.filter(p => p.Difficulty === "Easy").length;
+        const mediumCount = problemsInCategory.filter(p => p.Difficulty === "Medium").length;
+        const hardCount = problemsInCategory.filter(p => p.Difficulty === "Hard").length;
+        // Replace spaces in category name for element IDs
+        const categoryId = category.replace(/\s/g, '-');
+        return (
+          <div
+            key={category}
+            class="bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-green-500 transition-all cursor-pointer group animate__animated animate__fadeInUp"
+            onclick={"showTable('" + categoryId + "')"}
+          >
+            <div class="flex items-center gap-4 mb-4">
+              <span class="text-2xl text-green-500 font-mono">{index + 1}</span>
+              <h3 class="text-xl font-bold text-white">{category}</h3>
+            </div>
+            <p class="text-gray-400 mb-4">{problemsInCategory.length} Problems</p>
+            <div class="flex justify-between items-center">
+              <div class="flex gap-2">
+                <span class="px-3 py-1 bg-green-500/10 text-green-500 rounded-full text-sm">
+                  Easy: {easyCount}
+                </span>
+                <span class="px-3 py-1 bg-yellow-500/10 text-yellow-500 rounded-full text-sm">
+                  Medium: {mediumCount}
+                </span>
+                <span class="px-3 py-1 bg-red-500/10 text-red-500 rounded-full text-sm">
+                  Hard: {hardCount}
+                </span>
+              </div>
+            </div>
+
+            <div class="w-full mt-8" data-category-name={category}>
+              <div class="bg-gray-200 rounded-full h-4">
+                <div class="bg-green-600 h-4 rounded-full progress-bar" style="width: 0%;"></div>
+              </div>
+              <div class="mt-4">
+                <span class="text-sm text-green-600 progress-text">
+                  0/{problemsInCategory.length} - 0% Completed
+                </span>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- Tables Section -->
+    <div class="mt-20">
+      {Object.entries(categories).map(([category, problemsInCategory]) => {
+        const categoryId = category.replace(/\s/g, '-');
+        return (
+          <div id={categoryId} class="mb-10 hidden" key={category}>
+            <h3 class="text-xl sm:text-2xl font-bold text-white mb-4">{category}</h3>
+            <!-- Responsive Table -->
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-sm text-gray-400 table-auto">
+                <thead class="text-xs uppercase text-gray-300">
+                  <tr>
+                    <th scope="col" class="px-4 py-2">No.</th>
+                    <th scope="col" class="px-4 py-2">Subcategory</th>
+                    <th scope="col" class="px-4 py-2">Problem</th>
+                    <th scope="col" class="px-4 py-2">Link</th>
+                    <th scope="col" class="px-4 py-2">Difficulty</th>
+                    <th scope="col" class="px-4 py-2">Completed</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {problemsInCategory.map((problem, idx) => (
+                    <tr class="border-b border-neutral-700" key={problem.problem_slug}>
+                      <td class="px-4 py-2">{idx + 1}</td>
+                      <td class="px-4 py-2">{problem.Subcategory}</td>
+                      <td class="px-4 py-2">
+                        <a
+                          target="_blank"
+                          href={`/problem/${problem.problem_slug}`}
+                          class="text-green-600 hover:text-green-800 hover:underline transition-all duration-200"
+                        >
+                          <div class="flex items-center gap-2">
+                            {problem.Problem}
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20" style="color: #158a20;">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                            </svg>
+                          </div>
+                        </a>
+                      </td>
+                      <td class="px-4 py-2">
+                        {(() => {
+                          const link = striver_plus_ques_list[problem.Problem.trim()];
+                          if (link && link.includes("leetcode")) {
+                            return (
+                              <a href={link} target="_blank" class="text-green-500 hover:underline">
+                                <img
+                                  src="/images/LeetCode_logo_black.webp"
+                                  alt="LeetCode Logo"
+                                  class="w-5 h-5"
+                                />
+                              </a>
+                            );
+                          } else if (link && link.includes("geeksforgeeks")) {
+                            return (
+                              <a href={link} target="_blank" class="text-green-500 hover:underline">
+                                <img src="https://media.geeksforgeeks.org/gfg-gg-logo.svg" alt="GFG Logo" class="w-5 h-5" />
+                              </a>
+                            );
+                          } else if (link && link.includes("interviewbit")) {
+                            return (
+                              <a href={link} target="_blank" class="text-green-500 hover:underline">
+                                <img
+                                  src="/images/InterviewBit_logo.webp"
+                                  alt="InterviewBit Logo"
+                                  class="w-5 h-5"
+                                />
+                              </a>
+                            );
+                          } else if (link && link.includes("codingninjas")) {
+                            return (
+                              <a href={link} target="_blank" class="text-green-500 hover:underline">
+                                <img
+                                  src="/images/CodingNinjas_logo.webp"
+                                  alt="Coding Ninjas Logo"
+                                  class="w-5 h-5"
+                                />
+                              </a>
+                            );
+                          } else if (link && link.includes("spoj.com")) {
+                            return (
+                              <a href={link} target="_blank" class="text-green-500 hover:underline">
+                                <img src="/images/SPOJ_logo.webp" alt="Spoj Logo" class="w-5 h-5" />
+                              </a>
+                            );
+                          } else if (link && link !== "") {
+                            return (
+                              <a href={link} target="_blank" class="text-green-500 hover:underline">
+                                Link
+                              </a>
+                            );
+                          } else {
+                            return <span class="text-gray-500">N/A</span>;
+                          }
+                        })()}
+                      </td>
+                      <td class="px-4 py-2">
+                        {(() => {
+                          if (problem.Difficulty === "Easy") {
+                            return (
+                              <span class="px-2 py-1 bg-green-500/10 text-green-500 rounded-full text-xs">
+                                {problem.Difficulty}
+                              </span>
+                            );
+                          } else if (problem.Difficulty === "Medium") {
+                            return (
+                              <span class="px-2 py-1 bg-yellow-500/10 text-yellow-500 rounded-full text-xs">
+                                {problem.Difficulty}
+                              </span>
+                            );
+                          } else if (problem.Difficulty === "Hard") {
+                            return (
+                              <span class="px-2 py-1 bg-red-500/10 text-red-500 rounded-full text-xs">
+                                {problem.Difficulty}
+                              </span>
+                            );
+                          } else {
+                            return (
+                              <span class="px-2 py-1 bg-gray-500/10 text-gray-500 rounded-full text-xs">
+                                {problem.Difficulty}
+                              </span>
+                            );
+                          }
+                        })()}
+                      </td>
+                      <td class="px-4 py-2">
+                        <input
+                          type="checkbox"
+                          data-problem-slug={problem.problem_slug}
+                          data-category={category}
+                          class="rounded text-green-500 focus:ring-green-500"
+                        />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<!-- Inline script for showTable attached to the window on client load -->
+<script client:load>
+    window.showTable = function(categoryId) {
+      // Hide all tables
+      const allTables = document.querySelectorAll('.mb-10');
+      allTables.forEach((table) => {
+        table.classList.add('hidden');
+      });
+      // Show the selected table
+      const selectedTable = document.getElementById(categoryId);
+      if (selectedTable) {
+        selectedTable.classList.remove('hidden');
+        selectedTable.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+</script>

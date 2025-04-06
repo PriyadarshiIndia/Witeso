@@ -1,0 +1,10 @@
+---
+import EditProfile from "../../../components/DSA_Profile_Tracker/EditProfile";
+import Layout from "../../../layouts/Layout.astro";
+
+const slug = Astro.params.slug;
+---
+
+<Layout title="Edit Profile">
+  <EditProfile slug={slug} client:load />
+</Layout>

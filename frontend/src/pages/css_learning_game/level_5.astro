@@ -1,0 +1,603 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout
+    title="CSS Learning Game - Level 5"
+    meta_description="Play and learn CSS with our interactive game designed for beginners. Test your skills and improve your knowledge of CSS in a fun way."
+    meta_keywords="CSS game, learn CSS, interactive CSS game, CSS for beginners, play and learn CSS"
+>
+<style>
+    /* Reset and base styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        background-color: #f0f4f8;
+        color: #333;
+        min-height: 100vh;
+    }
+
+    /* Main layout */
+    .game-container {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .main-content {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        padding: 1rem;
+        padding-top: 100px;
+    }
+
+    /* Game sections */
+    .game-sections {
+        display: flex;
+        flex: 1;
+        gap: 1.5rem;
+        flex-direction: column;
+    }
+
+    @media (min-width: 768px) {
+        .game-sections {
+            flex-direction: row;
+        }
+    }
+
+    /* Code editor side */
+    .editor-section {
+        flex: 1;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .editor-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .editor-header h2 {
+        font-size: 1.5rem;
+        color: #166534;
+    }
+
+    .level-indicator {
+        background-color: #e9fbe7;
+        color: #166534;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-weight: bold;
+    }
+
+    .editor-container {
+        background-color: #f8fafc;
+        border-radius: 8px;
+        border: 1px solid #e2e8f0;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        flex: 1;
+    }
+
+    .editor-instructions {
+        background-color: #ecfdf5;
+        border-left: 4px solid #10b981;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 0 8px 8px 0;
+    }
+
+    .editor-instructions h3 {
+        color: #047857;
+        margin-bottom: 0.5rem;
+    }
+
+    .editor-instructions p {
+        color: #065f46;
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    #cssInput {
+        width: 100%;
+        height: 150px;
+        padding: 1rem;
+        border: none;
+        background-color: #1e293b;
+        color: #e2e8f0;
+        border-radius: 8px;
+        font-family: 'Courier New', monospace;
+        font-size: 0.9rem;
+        resize: none;
+        margin-bottom: 1rem;
+        line-height: 1.5;
+    }
+
+    #cssInput::placeholder {
+        color: #64748b;
+    }
+
+    .editor-buttons {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .btn {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+        background-color: #34d399;
+        color: white;
+        box-shadow: 0 4px 6px rgba(52, 211, 153, 0.2);
+    }
+
+    .btn-primary:hover {
+        background-color: #059669;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 8px rgba(52, 211, 153, 0.3);
+    }
+
+    .btn-secondary {
+        background-color: #e2e8f0;
+        color: #475569;
+    }
+
+    .btn-secondary:hover {
+        background-color: #cbd5e1;
+    }
+
+    /* Game preview side */
+    .preview-section {
+        flex: 1;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .preview-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .preview-header h2 {
+        font-size: 1.5rem;
+        color: #059669;
+    }
+
+    .timer {
+        background-color: #d1fae5;
+        color: #059669;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-weight: bold;
+    }
+
+    #gameArea {
+        flex: 1;
+        background: linear-gradient(to bottom, #bbf7d0, #d1fae5);
+        border-radius: 8px;
+        position: relative;
+        overflow: hidden;
+        min-height: 300px;
+        border: 1px solid #a7f3d0;
+    }
+
+    #target {
+        width: 80px;
+        height: 80px;
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/><polyline points="16 16 18 18 20 16"/><line x1="16" y1="10" x2="16" y2="16"/></svg>');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 40px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        border: 2px dashed #475569;
+        border-radius: 12px;
+        background-color: rgba(255, 255, 255, 0.7);
+    }
+
+    #target span {
+        color: #475569;
+        font-weight: bold;
+        font-size: 0.8rem;
+        margin-bottom: 5px;
+    }
+
+    #movableObject {
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        transition: all 0.3s ease;
+        filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.2));
+    }
+
+    #movableObject img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    /* Message styles */
+    #message {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 0.75rem 1.5rem;
+        border-radius: 30px;
+        font-weight: bold;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 100;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .message-success {
+        background-color: #dcfce7;
+        color: #166534;
+    }
+
+    .message-error {
+        background-color: #fee2e2;
+        color: #b91c1c;
+    }
+
+    .message-visible {
+        opacity: 1 !important;
+    }
+
+    /* Hints panel */
+    .hints-panel {
+        background-color: #f8fafc;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+
+    .hints-panel h3 {
+        color: #059669;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .hints-panel h3 svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .hints-panel ul {
+        list-style-type: none;
+        padding-left: 1.5rem;
+    }
+
+    .hints-panel li {
+        margin-bottom: 0.5rem;
+        font-family: 'Courier New', monospace;
+        color: #475569;
+        font-size: 0.9rem;
+    }
+
+    .hints-panel li::before {
+        content: "→";
+        margin-right: 0.5rem;
+        color: #34d399;
+    }
+
+    /* Confetti animation */
+    .confetti {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        opacity: 0;
+        animation: fall 3s ease-out forwards;
+    }
+
+    @keyframes fall {
+        0% {
+            transform: translateY(-100px) rotate(0deg);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(calc(100vh - 100px)) rotate(360deg);
+            opacity: 0;
+        }
+    }
+
+    /* Progress bar */
+    .progress-container {
+        width: 100%;
+        height: 8px;
+        background-color: #e2e8f0;
+        border-radius: 4px;
+        margin-top: 1rem;
+        overflow: hidden;
+    }
+
+    .progress-bar {
+        height: 100%;
+        background: linear-gradient(90deg, #34d399, #059669);
+        width: 0%;
+        transition: width 0.5s ease;
+        border-radius: 4px;
+    }
+
+</style>
+<div class="game-container">
+
+    <main class="main-content">
+        <div class="game-sections">
+            <!-- Code Editor Side -->
+            <section class="editor-section">
+                <div class="editor-header">
+                    <h2>Positions Game</h2>
+                    <div class="level-indicator">Level 5</div>
+                    <div class="navigation-buttons">
+                        <a href="/css_learning_game/level_4" id="prevLevelButton" class="btn btn-secondary">← Previous</a>
+                        <a href="/css_learning_game/level_6" id="nextLevelButton" class="btn btn-primary">Next →</a>
+                    </div>
+                </div>
+
+                <div class="editor-instructions">
+                    <h3>Mission</h3>
+                    <p>Move the banana to the basket using CSS positioning properties. Write your CSS code in the editor below.</p>
+                </div>
+
+                <div class="editor-container">
+                    <textarea id="cssInput" placeholder="/* Write your CSS here */
+/* Example:
+position: absolute;
+left: 100px;
+top: 200px;
+*/"></textarea>
+                    
+                    <div class="editor-buttons">
+                        <button id="applyButton" class="btn btn-primary">Apply CSS</button>
+                        <button id="resetButton" class="btn btn-secondary">Reset</button>
+                    </div>
+                </div>
+
+                <div class="hints-panel">
+                    <h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                        Helpful CSS Properties
+                    </h3>
+                    <ul>
+                        <li>position: absolute;</li>
+                        <li>left: 200px;</li>
+                        <li>top: 150px;</li>
+                        <li>right: 20px;</li>
+                        <li>bottom: 20px;</li>
+                        <li>transform: translate(100px, 50px);</li>
+                    </ul>
+                </div>
+
+                <div class="progress-container">
+                    <div id="progressBar" class="progress-bar" style="width: 0%"></div>
+                </div>
+            </section>
+
+            <!-- Game Preview Side -->
+            <section class="preview-section">
+                <div class="preview-header">
+                    <h2>Game Preview</h2>
+                    <div id="timerDisplay" class="timer">02:00</div>
+                </div>
+
+                <div id="gameArea">
+                    <!-- Target Basket -->
+                    <div id="target">
+                        <span>Basket</span>
+                    </div>
+                    
+                    <!-- Movable Banana -->
+                    <div id="movableObject">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Banana.png" alt="Banana">
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div id="message">Message goes here</div>
+
+</div>
+
+<script>
+    // Game variables
+    let timeLeft = 120;
+    let timerInterval;
+    let currentLevel = 1;
+    let progress = 0;
+    
+    // DOM Elements
+    const cssInput = document.getElementById('cssInput');
+    const movableObject = document.getElementById('movableObject');
+    const message = document.getElementById('message');
+    const timerDisplay = document.getElementById('timerDisplay');
+    const progressBar = document.getElementById('progressBar');
+    const applyButton = document.getElementById('applyButton');
+    const resetButton = document.getElementById('resetButton');
+    const gameArea = document.getElementById('gameArea');
+    
+    // Initialize the game
+    function initGame() {
+        resetTimer();
+        resetBananaPosition();
+        updateProgressBar(0);
+        
+        // Event listeners
+        applyButton.addEventListener('click', applyCSS);
+        resetButton.addEventListener('click', resetBananaPosition);
+    }
+    
+    // Apply CSS from the input
+    function applyCSS() {
+        const css = cssInput.value;
+        
+        try {
+            // Apply the CSS to the movable object
+            movableObject.style = css;
+            hideMessage();
+            
+            // Check if banana is in basket
+            checkPosition();
+            
+        } catch (error) {
+            showMessage('❌ Invalid CSS Property', 'error');
+        }
+    }
+    
+    // Check if the banana is in the basket
+    function checkPosition() {
+        const bananaRect = movableObject.getBoundingClientRect();
+        const basketRect = document.getElementById('target').getBoundingClientRect();
+        
+        // Check if the banana is mostly inside the basket
+        if (isOverlapping(bananaRect, basketRect, 0.7)) {
+            levelComplete();
+        }
+    }
+    
+    // Check if two rectangles are overlapping by a certain percentage
+    function isOverlapping(rect1, rect2, threshold = 0.5) {
+        // Calculate the overlapping area
+        const xOverlap = Math.max(0, Math.min(rect1.right, rect2.right) - Math.max(rect1.left, rect2.left));
+        const yOverlap = Math.max(0, Math.min(rect1.bottom, rect2.bottom) - Math.max(rect1.top, rect2.top));
+        const overlapArea = xOverlap * yOverlap;
+        
+        // Calculate the area of the banana
+        const bananaArea = (rect1.right - rect1.left) * (rect1.bottom - rect1.top);
+        
+        // Return true if the overlap is greater than the threshold
+        return overlapArea / bananaArea > threshold;
+    }
+    
+    // Level complete
+    function levelComplete() {
+        clearInterval(timerInterval);
+        showMessage('🎉 Success! Level Complete!', 'success');
+        createConfetti();
+        
+        // Update progress
+        progress += 25;
+        updateProgressBar(progress);
+        
+        // Prepare for next level (in a real game, you would load the next level)
+        setTimeout(() => {
+            currentLevel++;
+            document.querySelector('.level-indicator').textContent = `Level ${currentLevel}`;
+            resetBananaPosition();
+            resetTimer();
+        }, 3000);
+    }
+    
+    // Reset the banana position
+    function resetBananaPosition() {
+        movableObject.style = '';
+        cssInput.value = '';
+        hideMessage();
+    }
+    
+    // Timer functions
+    function resetTimer() {
+        clearInterval(timerInterval);
+        timeLeft = 120;
+        updateTimerDisplay();
+        
+        timerInterval = setInterval(() => {
+            timeLeft--;
+            updateTimerDisplay();
+            
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                showMessage('⏰ Time\'s up! Try again.', 'error');
+            }
+        }, 1000);
+    }
+    
+    function updateTimerDisplay() {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+    
+    // Show message
+    function showMessage(text, type) {
+        message.textContent = text;
+        message.className = type === 'success' ? 'message-success' : 'message-error';
+        message.classList.add('message-visible');
+        
+        setTimeout(() => {
+            hideMessage();
+        }, 3000);
+    }
+    
+    // Hide message
+    function hideMessage() {
+        message.classList.remove('message-visible');
+    }
+    
+    // Update progress bar
+    function updateProgressBar(value) {
+        progressBar.style.width = `${value}%`;
+    }
+    
+    // Create confetti effect
+    function createConfetti() {
+        const colors = ['#4a6cf7', '#fbbf24', '#34d399', '#f87171', '#a78bfa'];
+        
+        for (let i = 0; i < 50; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = `${Math.random() * 100}%`;
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.animationDuration = `${Math.random() * 2 + 2}s`;
+            confetti.style.animationDelay = `${Math.random() * 0.5}s`;
+            gameArea.appendChild(confetti);
+            
+            // Remove confetti after animation
+            setTimeout(() => {
+                confetti.remove();
+            }, 3000);
+        }
+    }
+    
+    // Initialize the game when the page loads
+    window.addEventListener('load', initGame);
+</script>
+</Layout>

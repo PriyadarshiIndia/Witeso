@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import TestContainer from '../../components/Mock_Test/TestContainer.jsx';
+
+const baseUrl = import.meta.env.DEV ? "http://127.0.0.1:5000" : import.meta.env.PUBLIC_API_URL;
+const baseURL = `${baseUrl}/api/tcs_nqt`;
+let tcs_nqt_section = Astro.params.slug;
+let title = '';
+let data = {};
+
+if (tcs_nqt_section?.startsWith('tcs_nqt_')) {
+  tcs_nqt_section = tcs_nqt_section.slice(8);
+  title = `${tcs_nqt_section.replace('_', ' ')} - TCS NQT`;
+
+  const response = await fetch(`${baseURL}?category=TCS NQT&subcategory=${tcs_nqt_section}`);
+  data = await response.json();
+}
+else {
+  title = `${tcs_nqt_section?.replace('_', ' ')} - TCS NQT`;
+
+  const response = await fetch(`${baseURL}?category=${tcs_nqt_section}`);
+  data = await response.json();
+}
+---
+
+<style>
+  .tcs_nqt {
+    font-family: Roboto, sans-serif, Inter, system-ui, sans-serif;
+  }
+  .tcs_nqt h1,
+  .tcs_nqt h2,
+  .tcs_nqt h3,
+  .tcs_nqt h4,
+  .tcs_nqt h5,
+  .tcs_nqt h6 {
+    font-family: Poppins, sans-serif, Inter, system-ui, sans-serif;
+  }
+</style>
+<Layout title={title}>
+  <div class="tcs_nqt">
+    <TestContainer client:load questions={data.problems || []} test_title={title} duration={data.duration} />
+  </div>
+</Layout>

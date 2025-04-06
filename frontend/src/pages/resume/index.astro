@@ -1,0 +1,78 @@
+---
+import Layout from '../../layouts/Layout.astro'
+---
+
+<Layout 
+    title="Create Overleaf ATS Friendly Resumes"
+    meta_description='Create Overleaf ATS Friendly Resumes with ease. Choose from a variety of templates and customize your resume to stand out from the crowd.'
+    meta_keywords='overleaf, resume, ats friendly, templates, customize, stand out, crowd, 100% ats resume builder, ai powered resume builder, job based resume tweaking'
+>
+<main class="min-h-screen bg-white pt-15 mt-2">
+  {/* Header Section */}
+  <div class="border-b border-neutral-300 shadow-[0_3px_10px_rgba(0,0,0,0.1)]">
+    <div class="mx-auto flex max-w-[1200px] items-center justify-between px-12 py-5">
+      <div class="text-[#738F93]">
+        <div class="text-xl">Welcome <b>Lol</b>!</div>
+      </div>
+      <div class="flex items-center gap-4">
+        <button class="text-xs border-2 border-green-600 hover:border-green-700 text-green-600 hover:bg-green-700 hover:text-white px-6 sm:px-8 py-3 rounded-lg font-semibold transition">
+          Import Resume
+        </button>
+        <button class="text-xs bg-green-600 hover:bg-green-700 text-white px-6 sm:px-8 py-3 rounded-lg font-semibold transition">
+          Create New
+        </button>
+      </div>
+    </div>
+  </div>
+
+  {/* Content Section */}
+  <div class="mx-auto max-w-[1200px] px-12 py-9">
+    <div class="flex flex-wrap gap-10">
+      {/* Existing Resume Card */}
+      <div class="group relative w-[300px]">
+        <div class="mb-2 h-14 w-full flex items-center justify-between">
+          <div class="text-lg font-light">Lol's Resume</div>
+          <h2 class="absolute right-1 top-6 z-0 text-4xl font-black text-green-500">1</h2>
+        </div>
+        
+        <div class="relative flex h-[420px] cursor-pointer flex-col items-center justify-center overflow-hidden rounded bg-white shadow-[0_6px_16px_rgba(0,0,0,0.2)]">
+          <img 
+            src="https://hackerresume-prod.s3.us-east-1.amazonaws.com/thumbnails/28678733/b563b195-3f42-4013-99b1-40f00dfdbeb3.png?t=1742454499346" 
+            alt="Lol's Resume" 
+            class="h-full w-full object-cover"
+          />
+          
+          {/* Overlay Actions */}
+          <div class="absolute inset-0 bg-black/30 opacity-0 transition-opacity group-hover:opacity-100">
+            <div class="absolute bottom-8 flex w-full justify-center gap-4 px-10">
+              <button class="rounded bg-white border border-white p-2 hover:bg-white/80">
+                <img src="/icons/edit_icon.svg" alt="Edit" class="h-6 w-6" />
+              </button>
+              <button class="rounded bg-white border border-white p-2 hover:bg-white/80">
+                <img src="/icons/duplicate_icon.svg" alt="Duplicate" class="h-6 w-6" />
+              </button>
+              <button class="rounded bg-white border border-white p-2 hover:bg-white/80">
+                <img src="/icons/trash_icon.svg" alt="Delete" class="h-6 w-6" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Create New Card */}
+      <div class="mt-16 h-14 w-[300px]">
+        <div class="group flex h-[420px] cursor-pointer flex-col items-center justify-center rounded border-2 border-green-500 bg-transparent transition-all duration-300 hover:scale-95 hover:bg-green-200 hover:shadow-[0_6px_16px_rgba(0,0,0,0.2)]">
+          <img 
+            src="/icons/new_icon.svg" 
+            alt="Create new Resume" 
+            class="h-16 w-16"
+          />
+          <div class="mt-2 rounded bg-green-600 px-7 py-3 font-bold text-white transition-colors group-hover:bg-white group-hover:text-green-600">
+            Create New
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+</Layout>

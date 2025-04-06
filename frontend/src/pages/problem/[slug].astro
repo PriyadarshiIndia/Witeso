@@ -1,0 +1,18 @@
+---
+import CodeLayout from "../../layouts/CodeLayout.astro";
+
+const { slug } = Astro.params;
+const baseUrl = import.meta.env.DEV ? "http://127.0.0.1:5000" : import.meta.env.PUBLIC_API_URL;
+const response = await fetch(`${baseUrl}/api/problem/${slug}`);
+const data = await response.json();
+const problem = data.problem || {};
+const problems = data.problems || [];
+
+const title = `${problem.Problem} - AlgoArena Witeso`;
+const meta_desc = `${problem.Problem} - ${problem.Problem_Statement}`;
+const meta_keywords = `${problem.Problem}, ${problem.Category}, ${problem.Subcategory}`;
+---
+
+<CodeLayout title={title} meta_desc={meta_desc} meta_keywords={meta_keywords} problem_slug={problem.problem_slug}>
+
+</CodeLayout>

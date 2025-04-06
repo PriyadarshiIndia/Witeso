@@ -1,0 +1,105 @@
+---
+import ProfileIntro from '../../components/DSA_Profile_Tracker/ProfileIntro';
+import BadgesAchievements from '../../components/DSA_Profile_Tracker/BadgesAchievements.astro';
+import Heatmap from '../../components/DSA_Profile_Tracker/Heatmap';
+import ContestGraph from '../../components/DSA_Profile_Tracker/ContestGraph.astro';
+import Awards from '../../components/DSA_Profile_Tracker/Awards.astro';
+import TopicAnalysis from '../../components/DSA_Profile_Tracker/TopicAnalysis.astro';
+import ProblemsSolved from '../../components/DSA_Profile_Tracker/ProblemsSolved.astro';
+import ContestRankings from '../../components/DSA_Profile_Tracker/ContestRankings.astro';
+import ContactUs from '../../components/DSA_Profile_Tracker/ContactUs.astro';
+import Layout from '../../layouts/Layout.astro';
+import ExperienceTimeline from '../../components/DSA_Profile_Tracker/ExperienceTimeline.astro';
+import NotFoundPage from '../../components/NotFoundPage.astro';
+
+const baseUrl = import.meta.env.DEV ? "http://127.0.0.1:5000" : import.meta.env.PUBLIC_API_URL;
+const slug = Astro.params.slug;
+const get_user_data_api = `${baseUrl}/api/user/${slug}`;
+const response = await fetch(`${get_user_data_api}`);
+const user_data = await response.json();
+---
+
+<!-- Main container with dark neutral background and green text accent -->
+<style>
+  .profile_page {
+    font-family: Roboto, sans-serif, Inter, system-ui, sans-serif;
+  }
+  .profile_page h1,
+  .profile_page h2,
+  .profile_page h3,
+  .profile_page h4,
+  .profile_page h5,
+  .profile_page h6 {
+    font-family: Poppins, sans-serif, Inter, system-ui, sans-serif;
+  }
+</style>
+
+{user_data.email && (
+  <Layout title={`${slug} Profile`}>
+  <div class="profile_page pt-20 min-h-screen bg-gray-900 text-green-500">
+    <!-- Profile Intro -->
+    <ProfileIntro 
+      plan_type={user_data.plan_type}
+      created_at={user_data.created_at}
+      full_name={user_data.name}
+      profile_pic={user_data.picture}
+      user_bio={user_data.bio} 
+      user_tagline={user_data.tagline} 
+      leetcode={user_data.leetcode}
+      codechef={user_data.codechef}
+      codeforces={user_data.codeforces}
+      codestudio={user_data.codestudio}
+      geeksforgeeks={user_data.geeksforgeeks}
+      interviewbit={user_data.interviewbit}
+      atcoder={user_data.atcoder}
+      hackerrank={user_data.hackerrank}
+      hackerearth={user_data.hackerearth}
+      spoj={user_data.spoj}
+      linkedin={user_data.linkedin}
+      github={user_data.github}
+      twitter={user_data.twitter}
+      facebook={user_data.facebook}
+      website={user_data.website}
+    />
+    <Heatmap leetcodeUsername={user_data.leetcode} codechefUsername={user_data.codechef} client:load />
+    <!-- <BadgesAchievements /> -->
+
+    <main id="profile" class="container mx-auto p-4">
+      <div class="flex flex-col md:flex-row gap-4">
+        <!-- Main Content -->
+        <div class="flex-1 space-y-8">
+          
+          <!-- <ContestGraph /> -->
+          <!-- <Awards />
+          <TopicAnalysis />
+          <ProblemsSolved />
+          <ContestRankings /> -->
+        </div>
+      </div>
+    </main>
+    
+    <!-- Experience Timeline -->
+    <!--  <ExperienceTimeline /> -->
+
+    <ContactUs
+      title="Contact & Connect"
+      subtitle="Get in touch and follow my journey"
+      contactInfo={{
+        email: user_data.email,
+        website: user_data.website,
+        location: user_data.location,
+      }}
+      socialMedia={{
+        github: user_data.github,
+        linkedin: user_data.linkedin,
+        twitter: user_data.twitter,
+        leetcode: user_data.leetcode,
+      }}
+    />
+  </div>
+  </Layout>
+)}
+
+{!user_data.email && (
+  <NotFoundPage />
+)}

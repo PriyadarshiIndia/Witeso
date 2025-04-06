@@ -1,0 +1,225 @@
+---
+const baseUrl = import.meta.env.DEV ? "http://127.0.0.1:5000" : import.meta.env.PUBLIC_API_URL;
+const pricing_api = `${baseUrl}/api/get_pro_pricing`;
+const response = await fetch(`${pricing_api}`);
+const pricing_data = await response.json();
+const pricing_data_string = JSON.stringify(pricing_data);
+---
+
+<script src="https://app.pocketsflow.com/pocketsflow-popup.js" data-subdomain="witeso"></script>
+<section id="pricing" class="py-20 bg-white" data-pricing_data={pricing_data_string}>
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-neutral-900 mb-4 animate__animated animate__fadeIn">Simple, Transparent
+          Pricing</h2>
+        <p class="text-lg text-neutral-600 max-w-2xl mx-auto animate__animated animate__fadeIn">Choose the plan that
+          best fits your learning journey</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div
+          class="bg-white rounded-xl p-8 border-2 border-neutral-200 hover:border-green-500 transition-all duration-300 animate__animated animate__fadeInUp">
+          <h3 class="text-2xl font-bold text-neutral-900 mb-4">Free</h3>
+          <div class="text-4xl font-bold text-neutral-900 mb-6">0 INR<span
+              class="text-lg text-neutral-600 font-normal">/month</span></div>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-neutral-600">Access to all DSA Problems</span>
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-neutral-600">Build-in Code Editor</span>
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-neutral-600">1500+ CompanyWise DSA Questions</span>
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-neutral-600">DSA Patterns</span>
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-neutral-600">460+ Latest (2024-25) OA Questions</span>
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-neutral-600">Verifiable Certificate</span>
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-neutral-600">Save Progress without Login</span>
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-neutral-600">3.5k Aptitude Questions & Mock Tests</span>
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-neutral-600">Detailed Explanations for Each Question's Answer</span>
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-neutral-600">DSA Profiles Tracker</span>
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-neutral-600">External Contest Tracker</span>
+            </li>
+          </ul>
+          <button onclick="window.location.href='#problemCategories'"
+            class="w-full py-3 px-6 rounded-lg border-2 border-green-500 text-green-500 font-semibold hover:bg-green-500 hover:text-white transition duration-300">
+            Get Started
+          </button>
+        </div>
+
+        <div
+          class="bg-white rounded-xl p-8 border-2 border-green-500 shadow-xl relative animate__animated animate__fadeInUp"
+          style="animation-delay: 0.2s">
+          <div
+            class="absolute top-0 right-0 bg-green-500 text-white px-4 py-1 rounded-bl-lg rounded-tr-lg text-sm font-semibold">
+            POPULAR
+          </div>
+          <h3 class="text-2xl font-bold text-neutral-900 mb-4">Pro</h3>
+          <div id="pro_pricing" class="text-4xl font-bold text-neutral-900 mb-6">20 INR<span
+              class="text-lg text-neutral-600 font-normal">/month</span></div>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-center">
+              <span class="text-neutral-600">The Pro Plan exists only to help cover the platform's operational
+                costs.</span>
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-neutral-600">All Free features</span>
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-neutral-600">30-Day Streak = 1 Month Pro Free!</span>
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-neutral-600">460+ Latest (2024-25) OA Questions & Solution</span>
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-neutral-600">Recruiter/HR Email Finder</span>
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-neutral-600">AI Help (Find Error, Review Code, Discussion)</span>
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-neutral-600">AI Powered Time & Space Complexity Analysis</span>
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-neutral-600">AI ATS-Friendly Overleaf Resume Builder</span>
+            </li>
+          </ul>
+          <!-- <button onclick="openPocketsflowCheckout({type: 'subscription', subscriptionId: '67dd1b473a9636cacbc2c836'})"
+            class="w-full py-3 px-6 rounded-lg bg-green-500 text-white font-semibold hover:bg-green-600 transition duration-300">
+            Start Pro Trial
+          </button> -->
+
+          <button onclick="openPocketsflowCheckout({type: 'subscription', subscriptionId: '67dd21d63a9636cacbc321fd'})"
+            class="w-full py-3 px-6 rounded-lg bg-green-500 text-white font-semibold hover:bg-green-600 transition duration-300">
+            Start Pro Trial
+          </button>
+        </div>
+
+        <div
+          class="bg-white rounded-xl p-8 border-2 border-neutral-200 hover:border-green-500 transition-all duration-300 animate__animated animate__fadeInUp"
+          style="animation-delay: 0.4s">
+          <h3 class="text-2xl font-bold text-neutral-900 mb-4">Donation</h3>
+          <div class="text-4xl font-bold text-neutral-900 mb-6">Custom</div>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-neutral-600">All Pro features</span>
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-neutral-600">Help Sustain the Platform</span>
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-neutral-600">Dedicated support</span>
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-neutral-600">Flexible Contribution</span>
+            </li>
+          </ul>
+          <button onclick="window.open('https://github.com/sponsors/PushpenderIndia', '_blank')"
+                  class="w-full py-3 px-6 rounded-lg border-2 border-green-500 text-green-500 font-semibold hover:bg-green-500 hover:text-white transition duration-300">
+              Support Us
+          </button>
+        </div>
+      </div>
+    </div>
+</section>
+
+<script>
+  // pricing_data is injected from the server
+  const pricing_data = document.getElementById('pricing').dataset.pricing_data;
+  const pricingMap = JSON.parse(pricing_data);
+  console.log(pricingMap["INR"]);
+
+  // Fetch user's details from ipapi and update pricing accordingly
+  fetch('https://ipapi.co/json/')
+    .then(response => response.json())
+    .then(data => {
+      const priceText = pricingMap[data.currency] || "1 USD/month";
+      document.getElementById('pro_pricing').innerText = priceText;
+    })
+    .catch(error => {
+      console.error('Error fetching IP data:', error);
+      document.getElementById('pro_pricing').innerText = "1 USD/month";
+    });
+</script>

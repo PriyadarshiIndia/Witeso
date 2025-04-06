@@ -1,0 +1,31 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import WitesoCard from "../../../components/DSA_Profile_Tracker/WitesoCard";
+
+const slug = Astro.params.slug;
+const baseUrl = import.meta.env.DEV ? "http://127.0.0.1:5000" : import.meta.env.PUBLIC_API_URL;
+const get_user_data_api = `${baseUrl}/api/user/${slug}`;
+const response = await fetch(`${get_user_data_api}`);
+const user_data = await response.json();
+const title = user_data.name
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ") + "'s Witeso Card Profile";
+
+---
+
+<Layout title={title}>
+    <WitesoCard
+        profile_pic={user_data.picture}
+        full_name={user_data.name}
+        username={slug}
+        view_profile_link=`/profile/${slug}`
+        leetcode={user_data.leetcode}
+        codechef={user_data.codechef}
+        codeforces={user_data.codeforces}
+        geekforgeeks={user_data.geekforgeeks}
+        codestudio={user_data.codestudio}
+        github={user_data.github}
+        client:load
+    />
+</Layout>

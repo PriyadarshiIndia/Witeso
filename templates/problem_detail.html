@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" type="" href="/images/favicon.ico">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GLPV0FHM5W"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-GLPV0FHM5W');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ problem.Problem }} - AlgoArena Witeso</title>
+
+  <!-- Meta Tags -->
+  <meta name="description" content="{{ problem.Problem }} - {{ problem.Problem_Statement }}" />
+  <meta name="keywords" content="{{ problem.Problem }}, {{ problem.Category }}, {{ problem.Subcategory }}" />
+  <meta name="author" content="AlgoArena Witeso" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#2b6cb0" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@AlgoArenaWiteso" />
+  <meta name="twitter:creator" content="@AlgoArenaWiteso" />
+  <meta name="twitter:title" content="{{ problem.Problem }} - AlgoArena Witeso" />
+  <meta name="twitter:description" content="{{ problem.Problem }} - {{ problem.Problem_Statement }}" />
+  <meta name="twitter:image" content="/images/witeso_logo.webp" />
+  <meta property="og:title" content="{{ problem.Problem }} - AlgoArena Witeso" />
+  <meta property="og:description" content="{{ problem.Problem }} - {{ problem.Problem_Statement }}" />
+  <meta property="og:image" content="/images/witeso_logo.webp" />
+  <meta property="og:url" content="https://algoarena.witeso.com/problem/{{ problem.problem_slug }}" />
+  <meta property="og:site_name" content="AlgoArena Witeso" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:locale:alternate" content="en_GB" />
+  <meta property="og:locale:alternate" content="hi_IN" />
+  <meta property="og:locale:alternate" content="hi_US" />
+  <meta property="og:locale:alternate" content="hi_GB" />
+  <meta property="og:locale:alternate" content="hi" />
+  <meta property="og:locale:alternate" content="en" />
+
+
+  <!-- Prism.js CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs/editor/editor.main.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.5/dist/cdn.min.js" defer></script>
+
+  <!-- Performance optimization: Preload critical resources -->
+  <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                DEFAULT: '{{settings.colors.primary}}',
+                50: '#f8f8f8',
+                100: '#e8e8e8',
+                200: '#d3d3d3',
+                300: '#a3a3a3',
+                400: '#737373',
+                500: '#525252',
+                600: '#404040',
+                700: '#262626',
+                800: '#171717',
+                900: '#0a0a0a',
+                950: '#030303',
+              },
+              secondary: {
+                DEFAULT: '{{settings.colors.secondary}}',
+                50: '#f8f8f8',
+                100: '#e8e8e8',
+                200: '#d3d3d3',
+                300: '#a3a3a3',
+                400: '#737373',
+                500: '#525252',
+                600: '#404040',
+                700: '#262626',
+                800: '#171717',
+                900: '#0a0a0a',
+                950: '#030303',
+              },
+              accent: {
+                DEFAULT: '{{settings.colors.accent}}',
+                50: '#f8f8f8',
+                100: '#e8e8e8',
+                200: '#d3d3d3',
+                300: '#a3a3a3',
+                400: '#737373',
+                500: '#525252',
+                600: '#404040',
+                700: '#262626',
+                800: '#171717',
+                900: '#0a0a0a',
+                950: '#030303',
+              },
+            },
+            fontFamily: {
+              sans: ['Roboto, sans-serif', 'Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Arial', 'sans-serif'],
+              heading: ['Source Code Pro, monospace', 'Inter', 'system-ui', 'sans-serif'],
+              body: ['Source Code Pro, monospace', 'Inter', 'system-ui', 'sans-serif'],
+            },
+            spacing: {
+              '18': '4.5rem',
+              '22': '5.5rem',
+              '30': '7.5rem',
+            },
+            maxWidth: {
+              '8xl': '88rem',
+              '9xl': '96rem',
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.5s ease-in',
+              'fade-out': 'fadeOut 0.5s ease-out',
+              'slide-up': 'slideUp 0.5s ease-out',
+              'slide-down': 'slideDown 0.5s ease-out',
+              'slide-left': 'slideLeft 0.5s ease-out',
+              'slide-right': 'slideRight 0.5s ease-out',
+              'scale-in': 'scaleIn 0.5s ease-out',
+              'scale-out': 'scaleOut 0.5s ease-out',
+              'spin-slow': 'spin 3s linear infinite',
+              'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'bounce-slow': 'bounce 3s infinite',
+              'float': 'float 3s ease-in-out infinite',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              fadeOut: {
+                '0%': { opacity: '1' },
+                '100%': { opacity: '0' },
+              },
+              slideUp: {
+                '0%': { transform: 'translateY(20px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              },
+              slideDown: {
+                '0%': { transform: 'translateY(-20px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              },
+              slideLeft: {
+                '0%': { transform: 'translateX(20px)', opacity: '0' },
+                '100%': { transform: 'translateX(0)', opacity: '1' },
+              },
+              slideRight: {
+                '0%': { transform: 'translateX(-20px)', opacity: '0' },
+                '100%': { transform: 'translateX(0)', opacity: '1' },
+              },
+              scaleIn: {
+                '0%': { transform: 'scale(0.9)', opacity: '0' },
+                '100%': { transform: 'scale(1)', opacity: '1' },
+              },
+              scaleOut: {
+                '0%': { transform: 'scale(1.1)', opacity: '0' },
+                '100%': { transform: 'scale(1)', opacity: '1' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
+              },
+            },
+            aspectRatio: {
+              'portrait': '3/4',
+              'landscape': '4/3',
+              'ultrawide': '21/9',
+            },
+          },
+        },
+        variants: {
+          extend: {
+            opacity: ['disabled'],
+            cursor: ['disabled'],
+            backgroundColor: ['active', 'disabled'],
+            textColor: ['active', 'disabled'],
+          },
+        },
+      }
+    });
+  </script>
+
+  <!-- Editorial CSS -->
+  <link rel="stylesheet" href="/static/css/editorial.css" />
+  <style>
+    .hidden {
+      display: none;
+    }
+
+    .tab-active {
+      border-bottom: 2px solid rgb(22 163 74);
+      font-weight: bold;
+    }
+
+    .h3 {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    /* Monaco editor container should fill its parent */
+    #code-editor {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body class="bg-neutral-900">
+  {% if not problem.Latest_OA %}
+  <!-- Sidebar -->
+  <div id="sidebar"
+    class="hidden z-[2000] fixed top-0 left-[-100%] w-85 h-full bg-neutral-800 shadow-lg transition-all duration-300 p-4 overflow-y-auto max-h-screen">
+    <!-- Sidebar Header -->
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-lg font-semibold text-green-500">Problem List</h3>
+      <button
+        class="text-xl font-bold w-8 h-8 flex items-center justify-center rounded-full bg-neutral-700 text-green-500 hover:bg-neutral-600 hover:text-green-400 focus:ring-2 focus:ring-green-500 transition-all"
+        onclick="toggleSidebar()">
+        ✕
+      </button>
+    </div>
+
+    <!-- Problem List -->
+    <ul class="space-y-2 z-[2000]">
+      {% for p in problems %}
+      <li
+        class="flex items-center justify-between p-3 rounded-lg transition-all
+        {% if p._id == problem._id %} bg-neutral-800 text-white {% else %} bg-neutral-600 hover:bg-neutral-700 {% endif %}">
+        <!-- Problem Number -->
+        <span class="font-medium text-neutral-400">{{ loop.index }}.</span>
+
+        <!-- Problem Name -->
+        <a href="{{ url_for('problem_detail', problem_slug=p.problem_slug) }}"
+          class="flex-1 mx-2 font-semibold {% if p._id == problem._id %} text-white {% else %} text-green-400 hover:text-green-300 {% endif %}">
+          {{ p.Problem }}
+        </a>
+
+        <!-- Difficulty Tag -->
+        {% if p.Difficulty %}
+        <span
+          class="px-3 py-1 {% if p.Difficulty == 'Easy' %} bg-green-500/10 text-green-500 {% elif p.Difficulty == 'Medium' %} bg-yellow-500/10 text-yellow-500 {% else %} bg-red-500/10 text-red-500 {% endif %} rounded-full text-sm">
+          {{ p.Difficulty }}
+        </span>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  <div class="flex h-screen text-neutral-300">
+    <!-- Left Panel: Problem & Editorial -->
+    <div class="lg:w-1/2 sm:w-full p-6 overflow-auto bg-neutral-900 shadow-lg">
+      <!-- Main Tabs (Problem, Editorial) -->
+      <div class="flex border-b border-green-500">
+        {% if not problem.Latest_OA %}
+        <button class="text-2xl mb-2" onclick="toggleSidebar()">☰</button>
+        {% endif %}
+        <button class="px-4 py-2 text-white-600 hover:text-green-500 tab-active" onclick="switchTab('problem-tab', this)">Problem</button>
+        {% if problem.DSA_Editorial_Data or problem.new_editorial %}
+        <button class="px-4 py-2 text-white-600 hover:text-green-500" onclick="switchTab('editorial-tab', this)">Editorial</button>
+        {% endif %}
+        {% if problem.Frequently_Occuring_Doubts %}
+        <button class="px-4 py-2 text-white-600 hover:text-green-500" onclick="switchTab('doubts-tab', this)">Doubts</button>
+        {% endif %}
+        {% if problem.Interview_Followup_Questions %}
+        <button class="px-4 py-2 text-white-600 hover:text-green-500" onclick="switchTab('ifq-tab', this)">IFQs</button>
+        {% endif %}
+        <button class="px-4 py-2 text-white-600 hover:text-green-500" onclick="switchTab('notes-tab', this)">Notes</button>
+      </div>
+
+      <!-- Problem Section -->
+      <div id="problem-tab" class="mt-4 bg-neutral-800 p-6">
+        <!-- Problem Title -->
+        <h1
+          class="text-3xl font-bold text-green-500 bg-gradient-to-r from-green-500 to-green-600 bg-clip-text text-transparent animate-pulse">
+          {{ problem.Problem }}
+        </h1>
+
+        <!-- Problem Metadata -->
+        <div class="mt-4 flex items-center space-x-2">
+          <span
+            class="px-3 py-1 rounded bg-neutral-700 text-sm text-green-500 border border-green-500 hover:bg-green-500 hover:text-neutral-800 transition duration-300">
+            {{ problem.Category }}
+          </span>
+          <span
+            class="px-3 py-1 rounded bg-neutral-700 text-sm text-green-500 border border-green-500 hover:bg-green-500 hover:text-neutral-800 transition duration-300">
+            {{ problem.Subcategory }}
+          </span>
+          {% if problem.Difficulty %}
+          <span class="px-3 py-1 rounded text-sm 
+            {% if problem.Difficulty == 'Easy' %} bg-green-500 text-neutral-800
+            {% elif problem.Difficulty == 'Medium' %} bg-yellow-500 text-neutral-800
+            {% else %} bg-red-500 text-white
+            {% endif %}
+            border border-green-500 hover:bg-neutral-700 hover:text-green-500 transition duration-300">
+            {{ problem.Difficulty }}
+          </span>
+          {% endif %}
+
+         <!-- Facts Button with Hover Content -->
+        {% if problem.Facts %}
+        <div class="relative inline-block group ml-2">
+          <button class="px-3 py-1 bg-green-600 text-white rounded hover:bg-green-500 focus:outline-none">
+            Facts
+          </button>
+          <div class="absolute z-[200] left-0 mt-2 w-80 p-4 bg-neutral-700 text-neutral-300 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <ul class="text-sm space-y-1">
+              <!-- Iterate over the preprocessed list -->
+              {% for fact in problem.Facts %}
+              <li class="list-disc">{{ fact |safe }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        {% endif %}
+        </div>
+
+        <!-- Problem Statement -->
+        <div class="mt-6">
+          <p class="text-neutral-300">{{ problem.Problem_Statement|safe }}</p>
+        </div>
+
+        {% if problem.Example1 and problem.Example2 and problem.Example3 %}
+        <!-- Examples -->
+        <div class="mt-6">
+          <h2 class="font-semibold text-xl text-green-500">Examples:</h2>
+          {% if problem.Example1 %}
+          <div
+            class="mt-4 bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-green-500 transition-all cursor-pointer group animate__animated animate__fadeInUp">
+            {{ problem.Example1|safe }}
+          </div>
+          {% endif %}
+          {% if problem.Example2 %}
+          <div
+            class="mt-4 bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-green-500 transition-all cursor-pointer group animate__animated animate__fadeInUp">
+            {{ problem.Example2|safe }}
+          </div>
+          {% endif %}
+          {% if problem.Example3 %}
+          <div
+            class="mt-4 bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-green-500 transition-all cursor-pointer group animate__animated animate__fadeInUp">
+            {{ problem.Example3|safe }}
+          </div>
+          {% endif %}
+        </div>
+        {% endif %}
+
+        {% if problem.Constraints %}
+        <!-- Constraints -->
+        <div class="mt-6">
+          <h2 class="font-semibold text-xl text-green-500">Constraints</h2>
+          <p class="mt-2 text-neutral-300">{{ problem.Constraints|safe }}</p>
+        </div>
+        {% endif %}
+
+        <!-- Hints -->
+        {% if problem.Hints %}
+        <div class="mt-6">
+          <h2 class="font-semibold text-xl text-green-500">Hints</h2>
+          <ul class="list-disc pl-5 mt-2 text-neutral-300">
+            {% for hint in problem.Hints %}
+            <li>{{ hint.hint }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+
+        <!-- Company Tags -->
+        {% if problem.Company_Tags %}
+        <div class="mt-6">
+          <h2 class="font-semibold text-xl text-green-500">Company Tags</h2>
+          <div class="flex flex-wrap mt-2">
+            {% for tag in problem.Company_Tags %}
+            <span
+              class="bg-neutral-700 text-green-500 text-sm font-semibold mr-2 mb-2 px-2.5 py-0.5 rounded border border-green-500 hover:bg-green-500 hover:text-neutral-800 transition duration-300">
+              {{ tag }}
+            </span>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+
+      <!-- Editorial Section (Hidden by Default) -->
+      <div id="editorial-tab" class="mt-4 hidden bg-neutral-800 p-4 text-neutral-300">
+        <h2
+          class="text-3xl font-bold text-green-500 bg-gradient-to-r from-green-500 to-green-600 bg-clip-text text-transparent animate-pulse">
+          Editorial</h2>
+        <!-- Editorial Sub-Tabs -->
+        <div class="flex mt-3 border-b">
+          {% for method in problem.DSA_Editorial_Data or problem.new_editorial %}
+          <button
+            class="text-green-500 px-4 py-2 text-gray-600 hover:text-green-500 editorial-tab {% if loop.first %} tab-active {% endif %}"
+            onclick="switchEditorial('{{ method.id }}', this)">
+            {{ method.name }}
+          </button>
+          {% endfor %}
+        </div>
+
+        <!-- Editorial Content -->
+        <div class="mt-4">
+          {% for data in problem.new_editorial %}
+          <div id="editorial-{{ data.id }}">
+            <div class="prose max-w-none bg-neutral-70">
+              {{ data.editorial|safe }}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="mt-4">
+          {% for method in problem.DSA_Editorial_Data %}
+          <div id="editorial-{{ method.id }}" class="{% if not loop.first %}hidden{% endif %}">
+            {% if problem.URL %}
+            <div class="mt-4">
+              <div class="relative" style="padding-top: 56.25%;">
+                <iframe src="{{ problem.URL }}" class="absolute top-0 left-0 w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen></iframe>
+              </div>
+            </div>
+            {% endif %}
+            
+            {% if method.placeholder and not problem.URL %}
+            <div class="mt-4">
+              <div class="relative w-full">
+                <textarea id="embedCode"
+                  class="bg-neutral-700 mb-4 w-full h-64 p-4 bg-gray-100 border rounded-lg text-sm font-mono " readonly>
+              document.body.innerHTML = '';
+              const iframeHTML = `
+                <div style="padding-top:56.25%;position:relative;">
+                  <iframe 
+                    src="{{ method.placeholder }}" 
+                    style="border:0;max-width:100%;position:absolute;top:0;left:0;height:100%;width:100%;" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen="" 
+                    frameborder="0">
+                  </iframe>
+                </div>
+              `;
+              document.body.innerHTML = iframeHTML;
+              
+              const script = document.createElement('script');
+              script.src = 'https://static.testpress.in/static/js/player.js';
+              document.head.appendChild(script);
+              
+              script.onload = () => {
+                const iframe = document.querySelector('iframe');
+                const player = new Testpress.Player(iframe);
+              
+                player.loaded().then(() => {
+                  console.log('Player is ready now');
+                });
+              
+                player.on('play', () => {
+                  console.log('Played the video');
+                });
+              };
+                </textarea>
+
+                <button id="copyButton"
+                  class="absolute top-2 right-2 px-3 py-1 bg-blue-600 text-white text-xs font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300">
+                  Copy
+                </button>
+              </div>
+
+              <script>
+                document.getElementById('copyButton').addEventListener('click', function () {
+                  const textarea = document.getElementById('embedCode');
+                  textarea.select();
+                  document.execCommand('copy');
+                  this.innerText = 'Copied!';
+                  setTimeout(() => {
+                    this.innerText = 'Copy';
+                  }, 2000);
+                });
+              </script>
+
+            </div>
+            {% endif %}
+            <div class="prose max-w-none bg-neutral-70">
+              {{ method.editorial|safe }}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div id="doubts-tab" class="mt-4 hidden">
+        {% if problem.Frequently_Occuring_Doubts %}
+        <h2
+          class="text-3xl font-bold text-green-500 bg-gradient-to-r from-green-500 to-green-600 bg-clip-text text-transparent animate-pulse">
+          Frequently Occurring Doubts</h2>
+
+        {% for doubt in problem.Frequently_Occuring_Doubts %}
+        <div
+          class="mt-4 bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-green-500 transition-all cursor-pointer group animate__animated animate__fadeInUp">
+          <p class="text-gray-400 font-semibold">
+            <span class="text-xl font-bold text-green-500">Q: </span><span
+              class="text-xl font-bold text-white">{{doubt.question|safe}}</span>
+          </p>
+          <p class="text-gray-400">
+            <span class="text-xl font-bold text-green-500">A: </span>{{doubt.answer|safe}}
+          </p>
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+
+      <div id="ifq-tab" class="mt-4 hidden">
+        {% if problem.Interview_Followup_Questions %}
+        <h2
+          class="text-3xl font-bold text-green-500 bg-gradient-to-r from-green-500 to-green-600 bg-clip-text text-transparent animate-pulse">
+          Interview Followup Questions</h2>
+        {% for doubt in problem.Interview_Followup_Questions %}
+        <div
+          class="mt-4 bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-green-500 transition-all cursor-pointer group animate__animated animate__fadeInUp">
+          <p class="text-gray-400 font-semibold">
+            <span class="text-xl font-bold text-green-500">Q: </span><span
+              class="text-xl font-bold text-white">{{doubt.question|safe}}</span>
+          </p>
+          <p class="text-gray-400">
+            <span class="text-xl font-bold text-green-500">A: </span>{{doubt.answer|safe}}
+          </p>
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+
+      <div id="notes-tab" class="mt-4 hidden">
+        <h2 class="mb-6 text-3xl font-bold text-green-500 bg-gradient-to-r from-green-500 to-green-600 bg-clip-text text-transparent animate-pulse">
+          Notes</h2>
+        <textarea id="notes-editor" class="w-full h-64 p-4 bg-neutral-700 text-white rounded-lg focus:border-green-500 focus:ring-green-500" placeholder="Write your notes here..."></textarea>
+        <button id="save-notes" class="mt-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition duration-200 flex items-center space-x-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+             <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span>Save Notes</span>
+        </button>
+      </div>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const notesEditor = document.getElementById('notes-editor');
+          const saveNotesButton = document.getElementById('save-notes');
+          const pageUri = window.location.pathname;
+
+          // Load saved notes from local storage
+          const savedNotes = localStorage.getItem(`userNotes_${pageUri}`);
+          if (savedNotes) {
+        notesEditor.value = savedNotes;
+          }
+
+          // Save notes to local storage
+          saveNotesButton.addEventListener('click', function () {
+        const notes = notesEditor.value;
+        localStorage.setItem(`userNotes_${pageUri}`, notes);
+        const buttonText = saveNotesButton.querySelector('span');
+        buttonText.innerText = 'Saved!';
+        setTimeout(() => {
+          buttonText.innerText = 'Save Notes';
+        }, 2000);
+          });
+        });
+      </script>
+    </div>
+
+    <!-- Right Panel: Code Editor -->
+    <div class="w-1/2 flex flex-col bg-neutral-700 text-black hidden sm:flex">
+      {% if not problem.Latest_OA %}
+      <div class="flex px-2 py-1 text-sm justify-between items-center">
+        <div class="flex items-center space-x-2">
+          <input type="hidden" name="csrf_token" id="csrf_token" value="{{ csrf_token() }}">
+          <select id="language-select" class="border p-1 rounded">
+            <option value="cpp">C++</option>
+            <option value="javascript">JavaScript</option>
+            <option value="java">Java</option>
+            <option value="python">Python</option>
+          </select>
+          <input type="hidden" id="problem_slug" value="{{ problem.problem_slug }}">
+          <button id="submit-btn"
+            class="bg-green-500 text-white px-4 py-1 rounded hover:bg-green-600 inline-flex items-center space-x-2">
+            <svg id="run_btn_icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v18l15-9L5 3z" />
+            </svg>
+            <svg id="run_btn_spinner" class="hidden animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg"
+              fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+            </svg>
+            <span>Run Code</span>
+          </button>
+        </div>
+      </div>
+      {% endif %}
+
+      <!-- Monaco Editor Container -->
+      <div class="flex flex-col bg-gray-50">
+        <!-- Navbar for Code Editor -->
+        <div class="bg-neutral-600 px-2 py-1 flex justify-between items-center shadow-md">
+          <h2 class="text-sm font-semibold text-white">Code</h2>
+          <div class="flex items-center space-x-2">
+            <button id="format-code" class="flex items-center gap-1 px-2 py-1 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-md hover:from-green-600 hover:to-green-800 transition duration-200 text-xs">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 6h16"></path>
+                <path d="M4 12h16"></path>
+                <path d="M4 18h16"></path>
+              </svg>
+              <span>Format</span>
+            </button>
+                 
+            <button id="copy-code" class="flex items-center gap-1 px-2 py-1 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-md hover:from-green-600 hover:to-green-800 transition duration-200 text-xs">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect>
+                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+              </svg>
+              <span>Copy</span>
+            </button>
+            
+            <button id="reset-code" class="flex items-center gap-1 px-2 py-1 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-md hover:from-green-600 hover:to-green-800 transition duration-200 text-xs">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12a9 9 0 1 1-6.219-8.59"></path>
+                <polyline points="21 3 21 9 15 9"></polyline>
+              </svg>
+              <span>Reset</span>
+            </button>
+                      
+          </div>
+        </div>
+
+      </div>
+      {% if problem.Is_Authenticated %}
+        <!-- Code Editor Container -->
+        <div id="code-editor" class="border border-gray-300 rounded-b-lg flex-1"></div>
+      {% elif problem.Latest_OA %}
+        <div class="flex items-center justify-center h-full">
+          <a href="{{ url_for('login', redirect=request.path) }}"
+        class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition duration-200">
+        Login to View Solution
+          </a>
+        </div>
+      {% else %}
+        <div class="flex items-center justify-center h-full">
+          <a href="{{ url_for('login', redirect=request.path) }}"
+        class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition duration-200">
+        Login to Run Code
+          </a>
+        </div>
+      {% endif %}
+
+      <!-- Test cases -->
+      {% if problem.Testcases %}
+      <div class="bg-white border p-4">
+
+        <!-- Test Case Tabs -->
+        <div class="flex space-x-2 border-b pb-2">
+          <div class="flex items-center space-x-2">
+            <span class="text-green-600 font-semibold">✅ Testcase</span>
+          </div>
+          {% for testcase in problem.Testcases %}
+          <button
+            class="testcase_btns px-2 py-1 text-sm border rounded-md bg-gray-100 hover:bg-gray-200 {% if loop.first %}bg-gray-300{% endif %}"
+            onclick="showTestCase({{ loop.index }})">
+            Case {{ loop.index }}
+          </button>
+          {% endfor %}
+        </div>
+
+        <!-- Test Case Content -->
+        <div class="mt-2">
+          {% for testcase in problem.Testcases %}
+          <div class="p-2 bg-gray-100 rounded mt-1 {% if not loop.first %}hidden{% endif %}"
+            id="testcase-{{ loop.index }}" data-testcase data-input='{{ testcase.inputs | tojson | safe }}'
+            data-output='{{ testcase.parsedOutput | safe }}'>
+
+            <div class="px-1 bg-white border rounded"><strong>Input:</strong> {{ testcase.inputs }}</div>
+
+            <div class="flex items-center space-x-2 mt-2">
+              <!-- Expected Output -->
+              <div class="px-2 bg-white border rounded"><strong>Expected:</strong> <span
+                  id="expected-{{ loop.index }}">{{ testcase.parsedOutput|safe }}</span></div>
+
+              <!-- Actual Output -->
+              <div class="px-2 bg-white border rounded"><strong>Actual:</strong> <span
+                  id="actual-{{ loop.index }}">-</span></div>
+
+              <!-- Time Taken -->
+              <div class="px-2 bg-white border rounded"><strong>Time:</strong> <span id="time-{{ loop.index }}">-</span>
+                sec</div>
+              <!-- Status Section -->
+              <div class="px-2 border rounded bg-gray-200 text-gray-700" id="status-{{ loop.index }}">
+                <strong>Status:</strong> <span class="font-bold">Waiting</span>
+              </div>
+            </div>
+
+          </div>
+          {% endfor %}
+        </div>
+
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- Monaco Editor Loader -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs/loader.min.js"></script>
+    <script>
+      require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' } });
+      require(['vs/editor/editor.main'], function () {
+        var boilerplateCodes = {
+          "cpp": `{{ problem.Public_Cpp|safe }}`,
+          "java": `{{ problem.Public_Java|safe }}`,
+          "python": `{{ problem.Public_Py|safe }}`,
+          "javascript": `{{ problem.Public_Js|safe }}`
+        };
+
+        var editor = monaco.editor.create(document.getElementById('code-editor'), {
+          value: boilerplateCodes["cpp"], // Default to cpp
+          language: "cpp",
+          theme: "vs-dark",
+          automaticLayout: true
+        });
+
+        document.getElementById("language-select").addEventListener("change", function () {
+          var selectedLang = this.value;
+          editor.setValue(boilerplateCodes[selectedLang]);
+          monaco.editor.setModelLanguage(editor.getModel(), selectedLang);
+        });
+
+        document.getElementById("copy-code").addEventListener("click", function () {
+            navigator.clipboard.writeText(editor.getValue()).then(() => {
+                let span = this.querySelector("span"); // Select the inner span
+                if (span) {
+                    span.innerText = "Copied!";
+                    setTimeout(() => {
+                        span.innerText = "Copy";
+                    }, 500);
+                }
+            });
+        });
+
+        document.getElementById("format-code").addEventListener("click", function () {
+          editor.getAction('editor.action.formatDocument').run();
+        });
+
+        document.getElementById("reset-code").addEventListener("click", function () {
+          var selectedLanguage = document.getElementById("language-select").value;
+          var boilerplateCode = boilerplateCodes[selectedLanguage];
+          editor.setValue(boilerplateCode);
+        });
+      });
+    </script>
+
+    <script>
+      // Function to switch between Problem & Editorial Tabs
+      function switchTab(tabId, clickedElement) {
+        document.getElementById('problem-tab').classList.add('hidden');
+        document.getElementById('editorial-tab').classList.add('hidden');
+        document.getElementById('doubts-tab').classList.add('hidden');
+        document.getElementById('ifq-tab').classList.add('hidden');
+        document.getElementById('notes-tab').classList.add('hidden');
+        document.getElementById(tabId).classList.remove('hidden');
+
+        // Update active tab style
+        document.querySelectorAll('.border-b button').forEach(btn => btn.classList.remove('tab-active'));
+        clickedElement.classList.add('tab-active');
+      }
+
+      // Function to switch Editorial Sub-tabs
+      function switchEditorial(editorialId, clickedElement) {
+        document.querySelectorAll('[id^="editorial-"]').forEach(section => section.classList.add('hidden'));
+        document.getElementById('editorial-' + editorialId).classList.remove('hidden');
+        document.getElementById('editorial-tab').classList.remove('hidden');
+        // Update active tab style
+        document.querySelectorAll('.editorial-tab').forEach(btn => btn.classList.remove('tab-active'));
+        clickedElement.classList.add('tab-active');
+      }
+    </script>
+    <script src="/static/js/editorial.js"></script>
+    <script src="/static/js/dryrun_caurosel.js"></script>
+    <script src="/static/js/submit_code.js"></script>
+    <script src="/static/js/testcases_switch.js"></script>
+    <!-- JavaScript for Sidebar -->
+    <script>
+      function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        sidebar.classList.toggle('hidden');
+
+        // Toggle the position of the sidebar
+        if (sidebar.style.left === '-100%' || sidebar.style.left === '') {
+          sidebar.style.left = '0';
+        } else {
+          sidebar.style.left = '-100%';
+        }
+      }
+    </script>
+    <!-- Prism.js JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <link rel="icon" type="" href="https://www.witeso.com/assets/favicon-CSsVNKEH.ico">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GLPV0FHM5W"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+  
+      gtag('config', 'G-GLPV0FHM5W');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="theme-color" content="#ffffff">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="">
+  
+    <title>{% block title %}AlgoArena - Online Coding Practice Platform | Data Structures & Algorithms{% endblock %}</title>
+    <!-- SEO Description -->
+    <meta name="description"
+      content="AlgoArena is a comprehensive coding practice platform offering challenges in data structures and algorithms. Perfect for interview preparation, competitive programming, and improving coding skills.">
+  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet">
+  
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+      rel="stylesheet">
+  
+    <!-- Performance optimization: Preload critical resources -->
+    <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
+  
+    <!-- Header Scripts -->
+    <script id="header-scripts">
+      // This script tag will be replaced with actual scripts.head content
+      if (window.scripts && window.scripts.head) {
+        document.getElementById('header-scripts').outerHTML = window.scripts.head;
+      }
+    </script>
+  
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+    <!-- Font stylesheet -->
+  
+    <script type="application/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
+  
+    <!-- Core CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                primary: {
+                  DEFAULT: '{{settings.colors.primary}}',
+                  50: '#f8f8f8',
+                  100: '#e8e8e8',
+                  200: '#d3d3d3',
+                  300: '#a3a3a3',
+                  400: '#737373',
+                  500: '#525252',
+                  600: '#404040',
+                  700: '#262626',
+                  800: '#171717',
+                  900: '#0a0a0a',
+                  950: '#030303',
+                },
+                secondary: {
+                  DEFAULT: '{{settings.colors.secondary}}',
+                  50: '#f8f8f8',
+                  100: '#e8e8e8',
+                  200: '#d3d3d3',
+                  300: '#a3a3a3',
+                  400: '#737373',
+                  500: '#525252',
+                  600: '#404040',
+                  700: '#262626',
+                  800: '#171717',
+                  900: '#0a0a0a',
+                  950: '#030303',
+                },
+                accent: {
+                  DEFAULT: '{{settings.colors.accent}}',
+                  50: '#f8f8f8',
+                  100: '#e8e8e8',
+                  200: '#d3d3d3',
+                  300: '#a3a3a3',
+                  400: '#737373',
+                  500: '#525252',
+                  600: '#404040',
+                  700: '#262626',
+                  800: '#171717',
+                  900: '#0a0a0a',
+                  950: '#030303',
+                },
+              },
+              fontFamily: {
+                sans: ['Roboto, sans-serif', 'Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                heading: ['Source Code Pro, monospace', 'Inter', 'system-ui', 'sans-serif'],
+                body: ['Source Code Pro, monospace', 'Inter', 'system-ui', 'sans-serif'],
+              },
+              spacing: {
+                '18': '4.5rem',
+                '22': '5.5rem',
+                '30': '7.5rem',
+              },
+              maxWidth: {
+                '8xl': '88rem',
+                '9xl': '96rem',
+              },
+              animation: {
+                'fade-in': 'fadeIn 0.5s ease-in',
+                'fade-out': 'fadeOut 0.5s ease-out',
+                'slide-up': 'slideUp 0.5s ease-out',
+                'slide-down': 'slideDown 0.5s ease-out',
+                'slide-left': 'slideLeft 0.5s ease-out',
+                'slide-right': 'slideRight 0.5s ease-out',
+                'scale-in': 'scaleIn 0.5s ease-out',
+                'scale-out': 'scaleOut 0.5s ease-out',
+                'spin-slow': 'spin 3s linear infinite',
+                'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                'bounce-slow': 'bounce 3s infinite',
+                'float': 'float 3s ease-in-out infinite',
+              },
+              keyframes: {
+                fadeIn: {
+                  '0%': { opacity: '0' },
+                  '100%': { opacity: '1' },
+                },
+                fadeOut: {
+                  '0%': { opacity: '1' },
+                  '100%': { opacity: '0' },
+                },
+                slideUp: {
+                  '0%': { transform: 'translateY(20px)', opacity: '0' },
+                  '100%': { transform: 'translateY(0)', opacity: '1' },
+                },
+                slideDown: {
+                  '0%': { transform: 'translateY(-20px)', opacity: '0' },
+                  '100%': { transform: 'translateY(0)', opacity: '1' },
+                },
+                slideLeft: {
+                  '0%': { transform: 'translateX(20px)', opacity: '0' },
+                  '100%': { transform: 'translateX(0)', opacity: '1' },
+                },
+                slideRight: {
+                  '0%': { transform: 'translateX(-20px)', opacity: '0' },
+                  '100%': { transform: 'translateX(0)', opacity: '1' },
+                },
+                scaleIn: {
+                  '0%': { transform: 'scale(0.9)', opacity: '0' },
+                  '100%': { transform: 'scale(1)', opacity: '1' },
+                },
+                scaleOut: {
+                  '0%': { transform: 'scale(1.1)', opacity: '0' },
+                  '100%': { transform: 'scale(1)', opacity: '1' },
+                },
+                float: {
+                  '0%, 100%': { transform: 'translateY(0)' },
+                  '50%': { transform: 'translateY(-10px)' },
+                },
+              },
+              aspectRatio: {
+                'portrait': '3/4',
+                'landscape': '4/3',
+                'ultrawide': '21/9',
+              },
+            },
+          },
+          variants: {
+            extend: {
+              opacity: ['disabled'],
+              cursor: ['disabled'],
+              backgroundColor: ['active', 'disabled'],
+              textColor: ['active', 'disabled'],
+            },
+          },
+        }
+      });
+    </script>
+  
+    <!-- Utilities and Components -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.3/cdn.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.45.1/apexcharts.min.js"></script>
+  
+    <!-- Optimized Font Loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+    <!-- Dynamic Meta Tags -->
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="">
+    <meta name="google-site-verification" content="">
+    <meta name="baidu-verification" content="">
+    <meta name="yandex-verification" content="">
+    <meta name="bing-verification" content="">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="AlgoArena">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="">
+  
+  
+    <link rel="icon" type="image/x-icon" href="{{settings.favicon}}">
+  
+    <style>
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: Roboto, sans-serif, Inter, system-ui, sans-serif;
+      }
+  
+      body {
+        font-family: Source Code Pro, monospace, Inter, system-ui, sans-serif;
+      }
+    </style>
+
+    {% block head %}{% endblock %}
+</head>
+
+<body class="bg-gray-100 text-gray-900">
+    <header id="header" class="bg-neutral-900 fixed top-0 left-0 w-full z-50 shadow-md">
+        <nav class="container mx-auto px-4 py-4">
+          <div class="flex justify-between items-center">
+            <div class="text-2xl font-bold text-green-500">AlgoArena</div>
+    
+            <div class="hidden md:flex space-x-6">
+              <a href="/" class="text-white hover:text-green-400 transition">Home</a>
+              <a href="/company_wise_dsa_questions" 
+                   class="relative text-transparent bg-gradient-to-r from-green-300 to-green-500 bg-clip-text font-semibold 
+                          after:content-[''] after:block after:w-full after:h-[2px] after:bg-green-400 after:scale-x-0 hover:after:scale-x-100 
+                          after:transition-transform after:duration-300">
+                    CompanyWise
+              </a>
+              <a href="/problem-solving-patterns-coding-interviews" 
+                   class="relative text-transparent bg-gradient-to-r from-green-300 to-green-500 bg-clip-text font-semibold 
+                          after:content-[''] after:block after:w-full after:h-[2px] after:bg-green-400 after:scale-x-0 hover:after:scale-x-100 
+                          after:transition-transform after:duration-300">
+                    Patterns
+              </a>
+              <a href="/#latest_oa" 
+                   class="relative text-transparent bg-gradient-to-r from-green-300 to-green-500 bg-clip-text font-semibold 
+                          after:content-[''] after:block after:w-full after:h-[2px] after:bg-green-400 after:scale-x-0 hover:after:scale-x-100 
+                          after:transition-transform after:duration-300">
+                  Latest OA
+              </a>
+              <a href="/#features" class="text-white hover:text-green-400 transition">Features</a>
+              <a href="/#problemCategories" class="text-white hover:text-green-400 transition">Problems</a>
+              <a href="/#howItWorks" class="text-white hover:text-green-400 transition">How It Works</a> 
+              <a href="/#pricing" class="text-white hover:text-green-400 transition">Pricing</a>
+              <a href="/#faq" class="text-white hover:text-green-400 transition">FAQ</a>
+            </div>
+    
+            <button id="mobile-menu-button" class="md:hidden text-white">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+    
+          <div id="mobile-menu" class="hidden md:hidden mt-4">
+            <a href="/" class="block py-2 text-white hover:text-green-400 transition">Home</a>
+            <a href="/company_wise_dsa_questions" 
+               class="block py-2 text-transparent bg-gradient-to-r from-green-300 to-green-500 bg-clip-text font-semibold">
+                CompanyWise
+            </a>
+            <a href="/problem-solving-patterns-coding-interviews" 
+               class="block py-2 text-transparent bg-gradient-to-r from-green-300 to-green-500 bg-clip-text font-semibold">
+                Patterns
+            </a>
+            <a href="/#latest_oa" 
+               class="block py-2 text-transparent bg-gradient-to-r from-green-300 to-green-500 bg-clip-text font-semibold">
+               Latest OA
+            </a>
+            <a href="/#features" class="block py-2 text-white hover:text-green-400 transition">Features</a>
+            <a href="/#problemCategories" class="block py-2 text-white hover:text-green-400 transition">Problems</a>
+            <a href="/#howItWorks" class="block py-2 text-white hover:text-green-400 transition">How It Works</a>
+            <a href="/#pricing" class="block py-2 text-white hover:text-green-400 transition">Pricing</a>
+            <a href="/#faq" class="block py-2 text-white hover:text-green-400 transition">FAQ</a>
+          </div>
+        </nav>
+    </header>
+    
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+    
+        mobileMenuButton.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+  
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer id="footer" class="bg-neutral-900 pt-20 pb-10">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8 mb-16">
+        <div class="animate__animated animate__fadeIn">
+          <h3 class="text-2xl font-bold text-white mb-6">AlgoArena</h3>
+          <p class="text-gray-400 mb-6">Master Data Structures and Algorithms with our comprehensive learning platform.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-green-500 transition">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+              </svg>
+            </a>
+            <a href="https://github.com/WitesoAI" target="_blank" class="text-gray-400 hover:text-green-500 transition">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/company/witeso" target="_blank" class="text-gray-400 hover:text-green-500 transition">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="animate__animated animate__fadeIn">
+          <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+          <ul class="space-y-2">
+            <li>
+              <a href="/" class="text-gray-400 hover:text-green-500 transition">Home</a>
+            </li>
+            <li>
+              <a href="#features" class="text-gray-400 hover:text-green-500 transition">Features</a>
+            </li>
+            <li>
+              <a href="#problemCategories" class="text-gray-400 hover:text-green-500 transition">Problems</a>
+            </li>
+            <li>
+              <a href="#howItWorks" class="text-gray-400 hover:text-green-500 transition">How It Works</a>
+            </li>
+            <li>
+              <a href="#pricing" class="text-gray-400 hover:text-green-500 transition">Pricing</a>
+            </li>
+            <li>
+              <a href="#faq" class="text-gray-400 hover:text-green-500 transition">FAQ</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="animate__animated animate__fadeIn">
+          <h4 class="text-white font-semibold mb-4">Resources</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-green-500 transition">Blog</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-green-500 transition">Documentation</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-green-500 transition">Community</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-green-500 transition">Help Center</a></li>
+          </ul>
+        </div>
+
+        <div class="animate__animated animate__fadeIn">
+          <h4 class="text-white font-semibold mb-4">Legal</h4>
+          <ul class="space-y-2">
+            <li>
+              <a href="https://www.witeso.com/terms" class="text-gray-400 hover:text-green-500 transition">Terms of
+                Service</a>
+            </li>
+            <li>
+              <a href="https://www.witeso.com/privacy" class="text-gray-400 hover:text-green-500 transition">Privacy
+                Policy</a>
+            </li>
+            <li>
+              <a href="https://www.witeso.com/#contact"
+                class="text-gray-400 hover:text-green-500 transition">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-neutral-800 pt-8">
+        <div class="text-center text-gray-400">
+          <p>&copy; {{ current_year }} AlgoArena. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  {% block scripts %}{% endblock %}
+</body>
+</html>

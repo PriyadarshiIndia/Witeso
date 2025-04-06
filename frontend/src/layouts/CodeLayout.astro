@@ -1,0 +1,236 @@
+---
+export interface Props {
+  title?: string;
+}
+const pageTitle =
+  Astro.props.title ||
+  "Witeso - Online Coding Practice Platform | Data Structures & Algorithms";
+
+const meta_desc = Astro.props.meta_desc || "Witeso is a comprehensive coding practice platform offering challenges in data structures and algorithms. Perfect for interview preparation, competitive programming, and improving coding skills.";
+const meta_keywords = Astro.props.meta_keywords || "Witeso, Online Coding Platform, Coding Practice Platform, Data Structures, Algorithms, Interview Preparation, Competitive Programming, Coding Skills, Coding Challenges, Coding Problems, Coding Questions, Coding Practice, Coding Test, Coding Quiz, Coding Contest, Coding Competition, Coding Challenges Online, Coding Problems Online, Coding Questions Online, Coding Practice Online, Coding Test Online, Coding Quiz Online, Coding Contest Online, Coding Competition Online";
+const problem_slug = Astro.props.problem_slug || "problem_slug";
+import "../styles/global.css";
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <!-- SEO Description -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+  
+    <!-- Meta Tags -->
+    <meta name="description" content={meta_desc} />
+    <meta name="keywords" content={meta_keywords} />
+    <meta name="author" content="AlgoArena Witeso" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#2b6cb0" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@AlgoArenaWiteso" />
+    <meta name="twitter:creator" content="@AlgoArenaWiteso" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={meta_desc} />
+    <meta name="twitter:image" content="/images/witeso_logo.webp" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={meta_desc} />
+    <meta property="og:image" content=="/images/witeso_logo.webp" />
+    <meta property="og:url" content=`https://www.witeso.com/problem/${problem_slug}` />
+    <meta property="og:site_name" content="AlgoArena Witeso" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:locale:alternate" content="en_GB" />
+    <meta property="og:locale:alternate" content="hi_IN" />
+    <meta property="og:locale:alternate" content="hi_US" />
+    <meta property="og:locale:alternate" content="hi_GB" />
+    <meta property="og:locale:alternate" content="hi" />
+    <meta property="og:locale:alternate" content="en" />
+  
+    <!-- Prism.js CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs/editor/editor.main.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.5/dist/cdn.min.js" defer></script>
+
+    <link rel="icon" type="" href="/images/favicon.ico" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GLPV0FHM5W"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GLPV0FHM5W');
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet" />
+
+    <!-- Header Scripts -->
+    <script id="header-scripts">
+      // This script tag will be replaced with actual scripts.head content
+      if (window.scripts && window.scripts.head) {
+        document.getElementById('header-scripts').outerHTML = window.scripts.head;
+      }
+    </script>
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Font stylesheet -->
+    <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
+
+    <!-- Optimized Font Loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <style>
+      h1, h2, h3, h4, h5, h6 {
+        font-family: Roboto, sans-serif, Inter, system-ui, sans-serif;
+      }
+      body {
+        font-family: Source Code Pro, monospace, Inter, system-ui, sans-serif;
+      }
+    </style>
+
+    <!-- Allow pages to inject additional head content -->
+    <slot name="head" />
+    
+    <!-- Editorial CSS -->
+    <link rel="stylesheet" href="/css/editorial.css" />
+    <style>
+        .hidden {
+        display: none;
+        }
+
+        .tab-active {
+        border-bottom: 2px solid rgb(22 163 74);
+        font-weight: bold;
+        }
+
+        .h3 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        }
+
+        /* Monaco editor container should fill its parent */
+        #code-editor {
+        width: 100%;
+        height: 100%;
+        }
+    </style>
+
+<style>
+    :root {
+      /* Color Variables */
+      --color-primary:  #f44336;
+      --color-primary-50: #f8f8f8;
+      --color-primary-100: #e8e8e8;
+      --color-primary-200: #d3d3d3;
+      --color-primary-300: #a3a3a3;
+      --color-primary-400: #737373;
+      --color-primary-500: #525252;
+      --color-primary-600: #404040;
+      --color-primary-700: #262626;
+      --color-primary-800: #171717;
+      --color-primary-900: #0a0a0a;
+      --color-primary-950: #030303;
+      
+      --color-secondary: #ff5722;
+      --color-secondary-50: #f8f8f8;
+      --color-secondary-100: #e8e8e8;
+      --color-secondary-200: #d3d3d3;
+      --color-secondary-300: #a3a3a3;
+      --color-secondary-400: #737373;
+      --color-secondary-500: #525252;
+      --color-secondary-600: #404040;
+      --color-secondary-700: #262626;
+      --color-secondary-800: #171717;
+      --color-secondary-900: #0a0a0a;
+      --color-secondary-950: #030303;
+      
+      --color-accent: #ff9800;
+      --color-accent-50: #f8f8f8;
+      --color-accent-100: #e8e8e8;
+      --color-accent-200: #d3d3d3;
+      --color-accent-300: #a3a3a3;
+      --color-accent-400: #737373;
+      --color-accent-500: #525252;
+      --color-accent-600: #404040;
+      --color-accent-700: #262626;
+      --color-accent-800: #171717;
+      --color-accent-900: #0a0a0a;
+      --color-accent-950: #030303;
+      
+      /* Font Families */
+      --font-sans: 'Roboto, sans-serif', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      --font-heading: 'Source Code Pro, monospace', 'Inter', system-ui, sans-serif;
+      --font-body: 'Source Code Pro, monospace', 'Inter', system-ui, sans-serif;
+      
+      /* Spacing & Max Width */
+      --spacing-18: 4.5rem;
+      --spacing-22: 5.5rem;
+      --spacing-30: 7.5rem;
+      --max-w-8xl: 88rem;
+      --max-w-9xl: 96rem;
+    }
+    
+    /* Animation Keyframes */
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+    @keyframes slideUp {
+      0% { transform: translateY(20px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes slideDown {
+      0% { transform: translateY(-20px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes slideLeft {
+      0% { transform: translateX(20px); opacity: 0; }
+      100% { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slideRight {
+      0% { transform: translateX(-20px); opacity: 0; }
+      100% { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes scaleIn {
+      0% { transform: scale(0.9); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    @keyframes scaleOut {
+      0% { transform: scale(1.1); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+</style>
+  </head>
+  <body class="bg-neutral-900">
+    <main>
+      <!-- Default slot for page content -->
+      <slot />
+    </main>
+    <!-- Allow pages to inject additional scripts -->
+    <slot name="scripts" />
+  </body>
+</html>

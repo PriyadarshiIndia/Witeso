@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const baseUrl = import.meta.env.DEV ? "http://127.0.0.1:5000" : import.meta.env.PUBLIC_API_URL;
+// Fetch the companies data from your API endpoint.
+const response = await fetch(`${baseUrl}/api/company_wise_dsa_questions`);
+const companies = await response.json();
+
+export const title = "Company Wise DSA Questions";
+---
+<Layout title={title}>
+  <div class="bg-neutral-900 text-gray-300">
+    <section id="problemCategories" class="py-20">
+      <div class="container mx-auto px-4 mt-20">
+        <div class="text-center mb-8">
+          <h2 class="text-4xl font-bold text-white mb-4 animate__animated animate__fadeIn">
+            Companies
+          </h2>
+          <p class="text-lg text-gray-300 max-w-2xl mx-auto animate__animated animate__fadeIn">
+            Select a company to view its LeetCode questions.
+          </p>
+        </div>
+        
+        <!-- Search Box -->
+        <div class="flex justify-center mb-20">
+          <div class="relative w-full max-w-md">
+            <input
+              id="searchBox"
+              type="text"
+              placeholder="Search Companies..."
+              class="w-full px-5 py-3 pl-10 rounded-full bg-neutral-800 text-white border border-neutral-700 focus:outline-none focus:border-green-500"
+            />
+            <svg
+              class="absolute left-3 top-3 w-5 h-5 text-neutral-500"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-4.35-4.35M16 10a6 6 0 1 0-12 0 6 6 0 0 0 12 0z"
+              />
+            </svg>
+          </div>
+        </div>
+        
+        <!-- Grid for Company Cards -->
+        <div id="companyGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+          {companies.map((company) => (
+            <a
+              href={`/company_wise_dsa/${company.name.toLowerCase()}`}
+              class="company-card block"
+              key={company.name}
+            >
+              <div class="bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-green-500 transition-all cursor-pointer group animate__animated animate__fadeInUp">
+                <div class="flex items-center gap-4 mb-4">
+                  <img
+                    src={company.logo}
+                    alt={`${company.name} Logo`}
+                    class="w-12 h-12 object-contain"
+                  />
+                    <h3 class="text-xl font-bold text-white company-name">
+                    {company.name.charAt(0).toUpperCase() + company.name.slice(1)}
+                    </h3>
+                </div>
+                <p class="text-gray-400 mb-4">{company.total} Questions</p>
+                <div class="flex gap-2">
+                  <span class="px-3 py-1 bg-green-500/10 text-green-500 rounded-full text-sm">
+                    Easy: {company.easy_count}
+                  </span>
+                  <span class="px-3 py-1 bg-yellow-500/10 text-yellow-500 rounded-full text-sm">
+                    Medium: {company.medium_count}
+                  </span>
+                  <span class="px-3 py-1 bg-red-500/10 text-red-500 rounded-full text-sm">
+                    Hard: {company.hard_count}
+                  </span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Search Functionality Script -->
+    <script client:load>
+      const searchBox = document.getElementById('searchBox');
+      searchBox.addEventListener('input', function() {
+        const filter = searchBox.value.toLowerCase();
+        const cards = document.querySelectorAll('.company-card');
+        cards.forEach(card => {
+          const companyName = card.querySelector('.company-name').textContent.toLowerCase();
+          card.style.display = companyName.includes(filter) ? 'block' : 'none';
+        });
+      });
+    </script>
+  </div>
+</Layout>

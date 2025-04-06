@@ -1,0 +1,31 @@
+---
+import Layout from "../../layouts/Layout.astro"
+import CSS_Hero from "../../components/CSS_Game/CSS_Hero.astro"
+import CSS_Game_Showcase from "../../components/CSS_Game/CSS_Game_Showcase.astro"
+import CSSGameFeatures from "../../components/CSS_Game/CSS_Game_Features.astro"
+---
+
+<style>
+    .css_game_page h1, 
+    .css_game_page h2, 
+    .css_game_page h3, 
+    .css_game_page h4, 
+    .css_game_page h5, 
+    .css_game_page h6 {
+      font-family: Roboto, sans-serif, Inter, system-ui, sans-serif;
+    }
+    .css_game_page {
+      font-family: Open Sans, sans-serif, Inter, system-ui, sans-serif;
+    }
+</style>
+<Layout 
+    title="Play and Learn CSS: The Interactive CSS Game for Beginners" 
+    meta_description="Play and learn CSS with our interactive game designed for beginners. Test your skills and improve your knowledge of CSS in a fun way."
+    meta_keywords="CSS game, learn CSS, interactive CSS game, CSS for beginners, play and learn CSS">
+
+    <div class="css_game_page">
+        <CSS_Hero />
+        <CSSGameFeatures />
+        <!-- <CSS_Game_Showcase /> -->
+    </div>
+</Layout>

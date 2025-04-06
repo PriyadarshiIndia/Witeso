@@ -1,0 +1,28 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Email_Finder/Hero.astro";
+import EmailFinderFeature from "../components/Email_Finder/EmailFinderFeature.astro";
+import HowItWorks from "../components/Email_Finder/HowItWorks.astro";
+import Benefits from "../components/Email_Finder/Benefits.astro";
+import UseCases from "../components/Email_Finder/UseCases.astro";
+import Testimonials from "../components/Email_Finder/Testimonials.astro";
+import FAQ from "../components/Email_Finder/FAQ.astro";
+---
+
+<style>
+    h1, h2, h3, h4, h5, h6 {
+      font-family: Poppins, sans-serif, Inter, system-ui, sans-serif;
+    }
+    body {
+      font-family: Open Sans, sans-serif, Inter, system-ui, sans-serif;
+    }
+</style>
+<Layout title="Recruiter Email Finder">
+    <Hero />
+    <EmailFinderFeature />
+    <HowItWorks />
+    <Benefits />
+    <UseCases />
+    <Testimonials />
+    <FAQ />
+</Layout>

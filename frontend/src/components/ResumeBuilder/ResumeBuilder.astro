@@ -1,0 +1,604 @@
+---
+const baseUrl = import.meta.env.DEV
+  ? "http://127.0.0.1:5000"
+  : import.meta.env.PUBLIC_API_URL;
+---
+<div class="p-6 max-w-4xl mx-auto">
+  <form id="resumeForm" data-base-url={baseUrl} class="space-y-6">
+    <!-- Personal Information Section -->
+    <details class="bg-neutral-800 rounded-xl p-6 shadow-lg" >
+      <summary class="flex items-center justify-between bg-gray-100 p-3 cursor-pointer bg-neutral-700">
+        <span class="text-green-500 font-semibold">😊 Personal Information</span>
+        <svg
+          class="w-5 h-5 transform transition-transform duration-200"
+          fill="#fff"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </summary>
+      <div class="p-4 space-y-4">
+        <!-- Personal Information inputs -->
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label for="firstName" class="block text-sm font-medium text-gray-300">First Name</label>
+            <input
+              type="text"
+              name="firstName"
+              id="firstName"
+              placeholder="e.g., John"
+              class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+              oninput="updateSection('personal')"
+            />
+          </div>
+          <div>
+            <label for="lastName" class="block text-sm font-medium text-gray-300">Last Name</label>
+            <input
+              type="text"
+              name="lastName"
+              id="lastName"
+              placeholder="e.g., Doe"
+              class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+              oninput="updateSection('personal')"
+            />
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-300">Email</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="info@witeso.com"
+              class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+              oninput="updateSection('personal')"
+            />
+          </div>
+          <div>
+            <label for="phone" class="block text-sm font-medium text-gray-300">Phone</label>
+            <input
+              type="text"
+              name="phone"
+              id="phone"
+              class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+              oninput="updateSection('personal')"
+            />
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label for="address" class="block text-sm font-medium text-gray-300">Address</label>
+            <input
+              type="text"
+              name="address"
+              id="address"
+              placeholder="e.g., Florida, USA"
+              class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+              oninput="updateSection('personal')"
+            />
+          </div>
+          <div>
+            <label for="jobTitle" class="block text-sm font-medium text-gray-300">Job Title</label>
+            <input
+              type="text"
+              name="jobTitle"
+              id="jobTitle"
+              placeholder="e.g., Software Engineer"
+              class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+              oninput="updateSection('personal')"
+            />
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <!-- Links Section -->
+    <details class="bg-neutral-800 rounded-xl p-6 shadow-lg" >
+      <summary class="flex items-center justify-between bg-gray-100 p-3 cursor-pointer bg-neutral-700">
+        <span class="text-green-500 font-semibold">🔗 Links</span>
+        <svg
+          class="w-5 h-5 transform transition-transform duration-200"
+          fill="#fff"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </summary>
+      <div class="p-4 space-y-4">
+        <!-- Links inputs -->
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label for="github" class="block text-sm font-medium text-gray-300">GitHub</label>
+            <input
+              type="text"
+              name="github"
+              id="github"
+              placeholder="GitHub URL"
+              class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+              oninput="updateSection('links')"
+            />
+          </div>
+          <div>
+            <label for="linkedin" class="block text-sm font-medium text-gray-300">LinkedIn</label>
+            <input
+              type="text"
+              name="linkedin"
+              id="linkedin"
+              placeholder="LinkedIn URL"
+              class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+              oninput="updateSection('links')"
+            />
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label for="leetcode" class="block text-sm font-medium text-gray-300">LeetCode</label>
+            <input
+              type="text"
+              name="leetcode"
+              id="leetcode"
+              placeholder="LeetCode URL"
+              class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+              oninput="updateSection('links')"
+            />
+          </div>
+          <div>
+            <label for="codechef" class="block text-sm font-medium text-gray-300">CodeChef</label>
+            <input
+              type="text"
+              name="codechef"
+              id="codechef"
+              placeholder="CodeChef URL"
+              class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+              oninput="updateSection('links')"
+            />
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label for="codeforces" class="block text-sm font-medium text-gray-300">CodeForces</label>
+            <input
+              type="text"
+              name="codeforces"
+              id="codeforces"
+              placeholder="CodeForces URL"
+              class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+              oninput="updateSection('links')"
+            />
+          </div>
+          <div>
+            <label for="portfolio" class="block text-sm font-medium text-gray-300">Portfolio</label>
+            <input
+              type="text"
+              name="portfolio"
+              id="portfolio"
+              placeholder="Portfolio URL"
+              class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+              oninput="updateSection('links')"
+            />
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <!-- Education Section -->
+    <details class="bg-neutral-800 rounded-xl p-6 shadow-lg" >
+      <summary class="flex items-center justify-between bg-gray-100 p-3 cursor-pointer bg-neutral-700">
+        <span class="text-green-500 font-semibold">🎓 Education</span>
+        <svg
+          class="w-5 h-5 transform transition-transform duration-200"
+          fill="#fff"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </summary>
+      <div class="p-4 space-y-4">
+        <!-- Education inputs -->
+        <div>
+          <label for="institution" class="block text-sm font-medium text-gray-300">Institution</label>
+          <input
+            type="text"
+            name="institution"
+            id="institution"
+            class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+            oninput="updateSection('education')"
+          />
+        </div>
+        <div>
+          <label for="eduLocation" class="block text-sm font-medium text-gray-300">Location</label>
+          <input
+            type="text"
+            name="eduLocation"
+            id="eduLocation"
+            class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+            oninput="updateSection('education')"
+          />
+        </div>
+        <div>
+          <label for="degreeType" class="block text-sm font-medium text-gray-300">Degree Type</label>
+          <input
+            type="text"
+            name="degreeType"
+            id="degreeType"
+            class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+            oninput="updateSection('education')"
+          />
+        </div>
+        <div>
+          <label for="fieldOfStudy" class="block text-sm font-medium text-gray-300">Field of Study</label>
+          <input
+            type="text"
+            name="fieldOfStudy"
+            id="fieldOfStudy"
+            class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+            oninput="updateSection('education')"
+          />
+        </div>
+        <div>
+          <label for="startEdu" class="block text-sm font-medium text-gray-300">Start Month/Year</label>
+          <input
+            type="text"
+            name="startEdu"
+            id="startEdu"
+            placeholder="e.g., Sep 2019"
+            class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+            oninput="updateSection('education')"
+          />
+        </div>
+        <div>
+          <label for="gradEdu" class="block text-sm font-medium text-gray-300">Grad Month/Year</label>
+          <input
+            type="text"
+            name="gradEdu"
+            id="gradEdu"
+            placeholder="e.g., Jun 2023"
+            class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+            oninput="updateSection('education')"
+          />
+        </div>
+        <div>
+          <label for="scores" class="block text-sm font-medium text-gray-300">Scores (GPA/CGPA, Percentage)</label>
+          <input
+            type="text"
+            name="scores"
+            id="scores"
+            class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+            oninput="updateSection('education')"
+          />
+        </div>
+      </div>
+    </details>
+
+    <!-- Experience Section -->
+    <details class="bg-neutral-800 rounded-xl p-6 shadow-lg" >
+      <summary class="flex items-center justify-between bg-gray-100 p-3 cursor-pointer bg-neutral-700">
+        <span class="text-green-500 font-semibold">💼 Experience</span>
+        <svg
+          class="w-5 h-5 transform transition-transform duration-200"
+          fill="#fff"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </summary>
+      <div class="p-4 space-y-4">
+        <!-- Experience inputs -->
+        <div>
+          <label for="employer" class="block text-sm font-medium text-gray-300">Employer</label>
+          <input
+            type="text"
+            name="employer"
+            id="employer"
+            class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+            oninput="updateSection('experience')"
+          />
+        </div>
+        <div>
+          <label for="jobTitleExp" class="block text-sm font-medium text-gray-300">Job Title</label>
+          <input
+            type="text"
+            name="jobTitleExp"
+            id="jobTitleExp"
+            class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+            oninput="updateSection('experience')"
+          />
+        </div>
+        <div>
+          <label for="startExp" class="block text-sm font-medium text-gray-300">Start Month/Year</label>
+          <input
+            type="text"
+            name="startExp"
+            id="startExp"
+            placeholder="e.g., Jan 2020"
+            class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+            oninput="updateSection('experience')"
+          />
+        </div>
+        <div>
+          <label for="endExp" class="block text-sm font-medium text-gray-300">End Month/Year</label>
+          <input
+            type="text"
+            name="endExp"
+            id="endExp"
+            placeholder="e.g., Dec 2021 or Present"
+            class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+            oninput="updateSection('experience')"
+          />
+        </div>
+        <div>
+          <label for="expLocation" class="block text-sm font-medium text-gray-300">Location</label>
+          <input
+            type="text"
+            name="expLocation"
+            id="expLocation"
+            class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+            oninput="updateSection('experience')"
+          />
+        </div>
+        <div>
+          <label for="expDescription" class="block text-sm font-medium text-gray-300">Description</label>
+          <textarea
+            name="expDescription"
+            id="expDescription"
+            rows="3"
+            class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+            oninput="updateSection('experience')"
+          ></textarea>
+        </div>
+      </div>
+    </details>
+
+    <!-- Skillsets Section -->
+    <details class="bg-neutral-800 rounded-xl p-6 shadow-lg" >
+      <summary class="flex items-center justify-between bg-gray-100 p-3 cursor-pointer bg-neutral-700">
+        <span class="text-green-500 font-semibold">🛠️ Skillsets</span>
+        <svg
+          class="w-5 h-5 transform transition-transform duration-200"
+          fill="#fff"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </summary>
+      <div class="p-4 space-y-4">
+        <!-- Skillsets inputs -->
+        <div>
+          <label for="languages" class="block text-sm font-medium text-gray-300">Languages</label>
+          <input
+            type="text"
+            name="languages"
+            id="languages"
+            placeholder="e.g., JavaScript, Python"
+            class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+            oninput="updateSection('skillsets')"
+          />
+        </div>
+        <div>
+          <label for="frameworks" class="block text-sm font-medium text-gray-300">Libraries / Frameworks</label>
+          <input
+            type="text"
+            name="frameworks"
+            id="frameworks"
+            placeholder="e.g., React, Astro"
+            class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+            oninput="updateSection('skillsets')"
+          />
+        </div>
+        <div>
+          <label for="tools" class="block text-sm font-medium text-gray-300">Tools / Platforms</label>
+          <input
+            type="text"
+            name="tools"
+            id="tools"
+            placeholder="e.g., Docker, AWS"
+            class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+            oninput="updateSection('skillsets')"
+          />
+        </div>
+        <div>
+          <label for="databases" class="block text-sm font-medium text-gray-300">Databases</label>
+          <input
+            type="text"
+            name="databases"
+            id="databases"
+            placeholder="e.g., MySQL, MongoDB"
+            class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+            oninput="updateSection('skillsets')"
+          />
+        </div>
+      </div>
+    </details>
+
+    <!-- Projects Section -->
+    <details class="bg-neutral-800 rounded-xl p-6 shadow-lg" >
+      <summary class="flex items-center justify-between bg-gray-100 p-3 cursor-pointer bg-neutral-700">
+        <span class="text-green-500 font-semibold">📁 Projects</span>
+        <svg
+          class="w-5 h-5 transform transition-transform duration-200"
+          fill="#fff"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </summary>
+      <div class="p-4 space-y-4">
+        <!-- Projects inputs -->
+        <div>
+          <label for="projectName" class="block text-sm font-medium text-gray-300">Project Name</label>
+          <input
+            type="text"
+            name="projectName"
+            id="projectName"
+            class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+            oninput="updateSection('projects')"
+          />
+        </div>
+        <div>
+          <label for="technologies" class="block text-sm font-medium text-gray-300">Technologies Used</label>
+          <input
+            type="text"
+            name="technologies"
+            id="technologies"
+            placeholder="e.g., React, Node.js"
+            class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+            oninput="updateSection('projects')"
+          />
+        </div>
+        <div>
+          <label for="projectLink" class="block text-sm font-medium text-gray-300">Project Link / GitHub Repository</label>
+          <input
+            type="text"
+            name="projectLink"
+            id="projectLink"
+            placeholder="Project URL"
+            class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+            oninput="updateSection('projects')"
+          />
+        </div>
+        <div>
+          <label for="projectDescription" class="block text-sm font-medium text-gray-300">Description</label>
+          <textarea
+            name="projectDescription"
+            id="projectDescription"
+            rows="3"
+            class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+            oninput="updateSection('projects')"
+          ></textarea>
+        </div>
+      </div>
+    </details>
+
+    <!-- Honors & Awards Section -->
+    <details class="bg-neutral-800 rounded-xl p-6 shadow-lg" >
+      <summary class="flex items-center justify-between bg-gray-100 p-3 cursor-pointer bg-neutral-700">
+        <span class="text-green-500 font-semibold">🏆 Honors & Awards</span>
+        <svg
+          class="w-5 h-5 transform transition-transform duration-200"
+          fill="#fff"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </summary>
+      <div class="p-4 space-y-4">
+        <!-- Honors & Awards inputs -->
+        <div>
+          <label for="honorsText" class="block text-sm font-medium text-gray-300">Text</label>
+          <input
+            type="text"
+            name="honorsText"
+            id="honorsText"
+            class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+            oninput="updateSection('honors')"
+          />
+        </div>
+        <div>
+          <label for="honorsLink" class="block text-sm font-medium text-gray-300">Link</label>
+          <input
+            type="text"
+            name="honorsLink"
+            id="honorsLink"
+            placeholder="Award URL"
+            class="mt-1 w-full px-4 py-2 bg-neutral-700 border border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+            oninput="updateSection('honors')"
+          />
+        </div>
+      </div>
+    </details>
+
+    <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-6 sm:px-8 py-3 rounded-lg font-semibold transition">
+      <span id="loadingSpinner" class="hidden">
+        <svg class="animate-spin h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+        </svg>
+      </span>
+      Update Resume
+    </button>
+  </form>
+</div>
+
+<!-- Script for updating URL parameters on input -->
+<script client:load>
+  function updateSection(section) {
+    const form = document.getElementById('resumeForm');
+    const data = {};
+    // Select all inputs/textareas associated with the section
+    const sectionInputs = form.querySelectorAll(`[oninput*="updateSection('${section}')"]`);
+    sectionInputs.forEach(input => {
+      data[input.name] = input.value;
+    });
+    const params = new URLSearchParams(window.location.search);
+    params.set(section, JSON.stringify(data));
+    const newUrl = window.location.pathname + '?' + params.toString();
+    window.history.replaceState({}, '', newUrl);
+  }
+</script>
+
+<!-- Accordion behavior: Only one details open at a time -->
+<script>
+  document.querySelectorAll("details").forEach((targetDetail) => {
+    targetDetail.addEventListener("toggle", (e) => {
+      if (targetDetail.open) {
+        document.querySelectorAll("details").forEach((detail) => {
+          if (detail !== targetDetail) {
+            detail.open = false;
+          }
+        });
+      }
+    });
+  });
+</script>
+
+<!-- Provided JS for form submission -->
+<script>
+  // Wait until the DOM is fully loaded
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('resumeForm');
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      // Add loading spinner or disable button here if needed
+      const submitButton = form.querySelector('button[type="submit"]');
+      const loadingSpinner = document.getElementById('loadingSpinner');
+      submitButton.disabled = true;
+      loadingSpinner.classList.remove('hidden');
+
+      // Collect form data into an object
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+      const baseUrl = form.dataset.baseUrl;
+      try {
+        const response = await fetch(`${baseUrl}/api/resume_builder`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        // Get the PDF blob and create an object URL to display it in the iframe
+        const blob = await response.blob();
+        const pdfUrl = URL.createObjectURL(blob);
+        document.getElementById('pdfFrame').src = pdfUrl;
+
+        submitButton.disabled = false;
+        loadingSpinner.classList.add('hidden');
+      } catch (error) {
+        console.error('Error generating resume:', error);
+        submitButton.disabled = false;
+        loadingSpinner.classList.add('hidden');
+      }
+    });
+  });
+</script>
