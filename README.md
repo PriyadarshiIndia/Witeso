@@ -107,6 +107,39 @@ Witeso is an all-in-one upskilling platform designed to empower users by providi
 - **Exploring Features:** Navigate through the dashboard to access coding challenges, resume tools, aptitude tests, and gamified learning modules.
 - **Feedback and Resume Tools:** Utilize the integrated AI tools to receive personalized feedback on your resume and improve your application strategy.
 
+## Team Mate
+
+<table>
+<tr>
+
+<td align="center">
+    <a href="https://github.com/PushpenderIndia">
+        <kbd><img src="https://avatars3.githubusercontent.com/PushpenderIndia?size=400" width="100px;" alt=""/></kbd><br />
+        <sub><b>Pushpender Singh</b></sub>
+    </a><br />
+    <a href="https://github.com/PriyadarshiIndia/Witeso/commits?author=PushpenderIndia" title="Code"> :computer: </a> 
+</td>
+
+<td align="center">
+    <a href="https://github.com/PriyadarshiIndia">
+        <kbd><img src="https://avatars3.githubusercontent.com/pri?size=400" width="100px;" alt=""/></kbd><br />
+        <sub><b>Priyadarshi Anand</b></sub>
+    </a><br />
+    <a href="https://github.com/PriyadarshiIndia/Witeso/commits?author=PriyadarshiIndia" title="Code"> :computer: </a> 
+</td>
+
+<td align="center">
+    <a href="https://github.com/khusburai28">
+        <kbd><img src="https://avatars3.githubusercontent.com/khusburai28?size=400" width="100px;" alt=""/></kbd><br />
+        <sub><b>Khusbu Rai</b></sub>
+    </a><br />
+    <a href="https://github.com/PriyadarshiIndia/Witeso/commits?author=khusburai28" title="Code"> :computer: </a> 
+</td>
+</tr>
+</tr>
+</table>
+
+
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
