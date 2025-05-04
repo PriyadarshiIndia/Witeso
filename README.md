@@ -146,6 +146,8 @@ Witeso leverages state-of-the-art AI technologies to provide users with a truly 
 
 These integrations ensure Witeso goes beyond static content — providing mentorship, feedback, and preparation that truly guides learners toward employment.
 
+![Architecture Diagram](./static/img/arcchitecture.png)
+![Flowchart ](./static/img/flow.png)
 
 ---
 
