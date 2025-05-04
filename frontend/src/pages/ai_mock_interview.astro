@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="AI Mock Interview">
+    <main class="w-full flex flex-col items-center justify-center">
+        <div class="iframe-container w-full h-screen overflow-hidden shadow-lg">
+            <iframe 
+                src="https://ai-mock-interview-umber-xi.vercel.app" 
+                class="w-full h-full border-0"
+                title="AI Mock Interview Platform"
+                allow="microphone; camera"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </main>
+</Layout>
+
+<style>
+    .iframe-container {
+        min-height: 80vh;
+    }
+</style>
+
+<script>
+    const response = await fetch("https://www.witeso.com/api/user", {
+        credentials: "include",
+      });
+    const user = await response.json();
+    if (!user.logged_in) {
+        window.location.href = "https://www.witeso.com/login?redirect_url=/ai_mock_interview";
+    }
+</script>

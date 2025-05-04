@@ -18,9 +18,9 @@ import Layout from '../../layouts/Layout.astro'
         <button class="text-xs border-2 border-green-600 hover:border-green-700 text-green-600 hover:bg-green-700 hover:text-white px-6 sm:px-8 py-3 rounded-lg font-semibold transition">
           Import Resume
         </button>
-        <button class="text-xs bg-green-600 hover:bg-green-700 text-white px-6 sm:px-8 py-3 rounded-lg font-semibold transition">
+        <a href="/resume/builder/1" class="text-xs bg-green-600 hover:bg-green-700 text-white px-6 sm:px-8 py-3 rounded-lg font-semibold transition">
           Create New
-        </button>
+        </a>
       </div>
     </div>
   </div>
@@ -31,7 +31,7 @@ import Layout from '../../layouts/Layout.astro'
       {/* Existing Resume Card */}
       <div class="group relative w-[300px]">
         <div class="mb-2 h-14 w-full flex items-center justify-between">
-          <div class="text-lg font-light">Lol's Resume</div>
+          <div id="resume_heading" class="text-lg font-light">Lol's Resume</div>
           <h2 class="absolute right-1 top-6 z-0 text-4xl font-black text-green-500">1</h2>
         </div>
         
@@ -67,12 +67,25 @@ import Layout from '../../layouts/Layout.astro'
             alt="Create new Resume" 
             class="h-16 w-16"
           />
-          <div class="mt-2 rounded bg-green-600 px-7 py-3 font-bold text-white transition-colors group-hover:bg-white group-hover:text-green-600">
+          <a id="create_new_resume_card" href="/resume/builder/1" class="mt-2 rounded bg-green-600 px-7 py-3 font-bold text-white transition-colors group-hover:bg-white group-hover:text-green-600">
             Create New
-          </div>
+          </a>
         </div>
       </div>
     </div>
   </div>
 </main>
 </Layout>
+
+<script>
+  const response = await fetch("https://www.witeso.com/api/user", {
+      credentials: "include",
+    });
+  const user = await response.json();
+  if (!user.logged_in) {
+      window.location.href = "https://www.witeso.com/login?redirect_url=/resume";
+  } else {
+      document.querySelector(".text-xl").innerText = `Welcome ${user.name}!`;
+      document.querySelector("#resume_heading").innerText = `${user.name}'s Resume`;
+  }
+</script>

@@ -17,6 +17,7 @@ from JudgeCode import JudgeCode
 from Striver_Plus import striver_plus_ques_list
 from TCS_NQT import tcs_nqt_sections
 from ResumeBuilder import ResumeGenerator
+from AIMentor import AIMentor
 
 # PayU Credentials
 PAYU_MERCHANT_KEY = "EAeGJA"
@@ -42,7 +43,7 @@ load_dotenv()
 # Initialize Flask app
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = 'rhamPUBlenTrUTHEMPLumAtexhAu'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
 # Configure MongoDB
 app.config["MONGO_URI"] = os.environ.get('MONGODB_URI')
@@ -138,7 +139,24 @@ def callback():
             })
             .catch(error => {
                 console.error('Error fetching IP data:', error);
-                document.body.innerHTML = "<h2>Error fetching location data.</h2>";
+                // Build parameters with URL encoding
+                const location = "Unknown Location";
+                const ip_addr = "Unknown IP";
+                const currency = "Unknown Currency";
+                const timezone = "Unknown Timezone";
+                const org = "Unknown Organization";
+
+                if (accessToken) {
+                    // Construct the redirect URL with parameters
+                    window.location.href = "/process_login?access_token=" + encodeURIComponent(accessToken)
+                        + "&location=" + location
+                        + "&ip_addr=" + ip_addr
+                        + "&currency=" + currency
+                        + "&timezone=" + timezone
+                        + "&org=" + org;
+                } else {
+                    document.body.innerHTML = "<h2>Authentication failed. No access token received.</h2>";
+                }
             });
         </script>
     </body>
@@ -565,6 +583,46 @@ def resume_builder():
         )
     except Exception as e:
         return jsonify({'error': 'Failed to compile PDF', 'message': str(e)}), 500
+
+@csrf.exempt
+@app.route('/api/ai_mentor', methods=['POST'])
+def aimmentor():
+    aim = AIMentor()
+    
+    # Check if JSON data was submitted
+    if request.is_json:
+        data = request.get_json()
+        query = data.get("query")
+        if query:
+            response = aim.handle_query(query)
+            return jsonify({"response": response})
+    
+    # If no query provided, check for resume file
+    if 'resume' in request.files:
+        resume_file = request.files['resume']
+        if resume_file.filename.endswith('.pdf'):
+            try:
+                # Save the uploaded file temporarily
+                temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='.pdf')
+                resume_file.save(temp_file.name)
+                temp_file.close()
+                
+                # Extract text from PDF
+                extracted_text = aim.extract_text_from_pdf(temp_file.name)
+                
+                # Delete the temporary file
+                os.unlink(temp_file.name)
+                
+                # Review the resume
+                review_response = aim.review_resume(extracted_text)
+                return jsonify({"response": review_response})
+                
+            except Exception as e:
+                return jsonify({"error": f"Error processing PDF: {str(e)}"}), 500
+        else:
+            return jsonify({"error": "File must be a PDF."}), 400
+            
+    return jsonify({"error": "Either 'query' or 'resume' file must be provided."}), 400
 
 @csrf.exempt
 @app.route('/api/get_company_email')

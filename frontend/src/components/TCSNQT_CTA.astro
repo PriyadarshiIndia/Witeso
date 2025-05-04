@@ -1,0 +1,151 @@
+---
+// TCS NQT Call-to-action component
+import { Image } from 'astro:assets';
+---
+
+<div class="tcs-nqt-cta bg-slate-800 overflow-hidden">
+    <div class="container mx-auto px-4 py-12 md:py-16 flex flex-col md:flex-row items-center gap-8">
+        <!-- Text Content -->
+        <div class="w-full md:w-1/2 space-y-6 text-white">
+            <span class="inline-block px-4 py-1 bg-green-600 rounded-full text-sm font-medium">FREE RESOURCE</span>
+            <h2 class="text-3xl md:text-4xl font-bold">Ace Your TCS NQT With Our Free Mock Tests</h2>
+            <p class="text-slate-300 text-lg">Prepare effectively with practice tests designed to match the actual TCS National Qualifier Test format and difficulty.</p>
+            
+            <ul class="space-y-3">
+                <li class="flex items-center gap-2">
+                    <span class="bg-green-500 rounded-full p-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                        </svg>
+                    </span>
+                    <span>Realistic test environment</span>
+                </li>
+                <li class="flex items-center gap-2">
+                    <span class="bg-green-500 rounded-full p-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                        </svg>
+                    </span>
+                    <span>Detailed explanations</span>
+                </li>
+                <li class="flex items-center gap-2">
+                    <span class="bg-green-500 rounded-full p-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                        </svg>
+                    </span>
+                    <span>Performance analytics</span>
+                </li>
+            </ul>
+            
+            <div class="pt-4">
+                <a href="/tcs_nqt_free_mock_tests" class="inline-block px-8 py-4 bg-green-500 hover:bg-green-600 transition-colors rounded-lg font-bold text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    Start Free Mock Test
+                </a>
+            </div>
+        </div>
+        
+        <!-- Interactive Vector Image -->
+        <div class="w-full md:w-1/2 relative">
+            <div class="interactive-vector-container">
+                <svg viewBox="0 0 500 400" class="w-full h-auto" id="tcsNqtVector">
+                    <!-- Laptop Base -->
+                    <rect x="100" y="200" width="300" height="20" fill="#2d3748" rx="5" />
+                    <!-- Laptop Screen -->
+                    <rect x="120" y="100" width="260" height="160" fill="#1a202c" rx="5" />
+                    <rect x="130" y="110" width="240" height="140" fill="#4b5563" rx="3" />
+                    
+                    <!-- Code Lines Animation -->
+                    <g class="code-lines">
+                        <rect x="140" y="120" width="180" height="6" fill="#22c55e" rx="3" opacity="0.8" />
+                        <rect x="140" y="136" width="140" height="6" fill="#ffffff" rx="3" opacity="0.6" />
+                        <rect x="140" y="152" width="200" height="6" fill="#ffffff" rx="3" opacity="0.6" />
+                        <rect x="140" y="168" width="160" height="6" fill="#22c55e" rx="3" opacity="0.8" />
+                        <rect x="140" y="184" width="120" height="6" fill="#ffffff" rx="3" opacity="0.6" />
+                        <rect x="140" y="200" width="180" height="6" fill="#22c55e" rx="3" opacity="0.8" />
+                    </g>
+                    
+                    <!-- Floating Elements -->
+                    <g class="floating-elements">
+                        <!-- Gears -->
+                        <circle cx="400" cy="130" r="15" fill="#22c55e" class="gear" />
+                        <circle cx="70" cy="180" r="20" fill="#22c55e" class="gear" />
+                        
+                        <!-- Check Marks -->
+                        <circle cx="380" cy="220" r="12" fill="#16a34a" class="checkmark-circle" />
+                        <path d="M375,220 l5,5 l10,-10" stroke="white" stroke-width="2" fill="none" class="checkmark" />
+                        
+                        <circle cx="90" cy="130" r="12" fill="#16a34a" class="checkmark-circle" />
+                        <path d="M85,130 l5,5 l10,-10" stroke="white" stroke-width="2" fill="none" class="checkmark" />
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .interactive-vector-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    
+    /* Animation for code lines */
+    .code-lines rect {
+        animation: pulse 3s infinite alternate;
+    }
+    
+    .code-lines rect:nth-child(odd) {
+        animation-delay: 0.5s;
+    }
+    
+    /* Animation for floating elements */
+    .gear {
+        transform-origin: center;
+        animation: rotate 10s linear infinite;
+    }
+    
+    .gear:nth-child(2) {
+        animation-direction: reverse;
+        animation-duration: 15s;
+    }
+    
+    .checkmark-circle {
+        animation: pulse 2s infinite alternate;
+    }
+    
+    .checkmark {
+        animation: draw 3s infinite;
+    }
+    
+    .icon-container {
+        animation: float 4s infinite alternate ease-in-out;
+    }
+    
+    .icon-container:nth-child(odd) {
+        animation-delay: 1s;
+    }
+    
+    @keyframes pulse {
+        from { opacity: 0.5; }
+        to { opacity: 1; }
+    }
+    
+    @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    
+    @keyframes draw {
+        0% { stroke-dasharray: 20; stroke-dashoffset: 20; }
+        50% { stroke-dasharray: 20; stroke-dashoffset: 0; }
+        100% { stroke-dasharray: 20; stroke-dashoffset: 0; }
+    }
+    
+    @keyframes float {
+        0% { transform: translateY(0) rotate(0); }
+        50% { transform: translateY(-10px) rotate(5deg); }
+        100% { transform: translateY(5px) rotate(-5deg); }
+    }
+</style>

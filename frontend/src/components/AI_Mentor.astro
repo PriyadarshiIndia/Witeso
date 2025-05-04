@@ -1,0 +1,66 @@
+---
+---
+
+<section class="ai-mentor-cta relative overflow-hidden bg-slate-800 py-12 px-4 sm:px-6 lg:px-8">
+    <!-- Decorative elements -->
+    <div class="absolute -top-24 -right-24 w-64 h-64 bg-green-500 rounded-full opacity-20 blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-40 h-40 bg-green-600 rounded-full opacity-20 blur-2xl"></div>
+    
+    <div class="max-w-7xl mx-auto relative z-10">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div class="space-y-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-white">
+                    Meet <span class="text-green-400">Witeso Guru</span>, Your Personal AI Career Mentor
+                </h2>
+                <p class="text-lg text-gray-300">
+                    Get personalized career guidance, interview preparation, and skill development roadmaps tailored just for you.
+                </p>
+                <ul class="space-y-3">
+                    {['Career path recommendations', 'Resume Review', 'Interview preparation', 'Skill gap analysis', 'Learning resources'].map(feature => (
+                        <li class="flex items-center text-gray-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            {feature}
+                        </li>
+                    ))}
+                </ul>
+                <div class="pt-4">
+                    <a href="/ai_mentor" class="px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg transition-all shadow-lg hover:shadow-green-500/30">
+                        Start Your Career Journey
+                    </a>
+                </div>
+            </div>
+            
+            <div class="relative">
+                <div class="bg-green-600/20 p-6 rounded-2xl backdrop-blur-sm border border-green-500/20">
+                    <div class="absolute -top-8 -left-8 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                        </svg>
+                    </div>
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-semibold text-white">How Witeso Guru Works</h3>
+                        <div class="space-y-3 text-gray-300">
+                            <p class="flex items-start">
+                                <span class="bg-green-500 text-white w-6 h-6 rounded-full flex items-center justify-center mr-2 shrink-0">1</span>
+                                <span>Share your background, goals, and aspirations</span>
+                            </p>
+                            <p class="flex items-start">
+                                <span class="bg-green-500 text-white w-6 h-6 rounded-full flex items-center justify-center mr-2 shrink-0">2</span>
+                                <span>Receive personalized career insights and recommendations</span>
+                            </p>
+                            <p class="flex items-start">
+                                <span class="bg-green-500 text-white w-6 h-6 rounded-full flex items-center justify-center mr-2 shrink-0">3</span>
+                                <span>Follow your customized roadmap to career success</span>
+                            </p>
+                        </div>
+                        <div class="pt-2">
+                            <div class="text-sm text-gray-400 italic">"Witeso Guru helped me identify the perfect career path based on my skills and interests!" - Recent Graduate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
