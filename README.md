@@ -135,9 +135,17 @@ From any village, any home, any college — now anyone can learn and succeed fro
 - **Vercel** – Frontend hosting
 - **Supabase + Google OAuth** – Authentication & user management
 
-### AI Integrations
+### 🤖 AI Integrations
 
-- **Deepseek LLM** – AI resume review, HR info, and learning insights
+Witeso leverages state-of-the-art AI technologies to provide users with a truly personalized and job-ready upskilling experience:
+
+- **LLaMA** – Powers intelligent resume reviews, generating insightful and role-specific feedback to help users create professional, industry-aligned resumes.
+- **Gemini** – Enables smart learning assistance by generating personalized learning paths, answering user queries, and recommending content tailored to individual goals.
+- **Vapi (Voice Agent)** – Delivers realistic mock interview simulations through voice-based AI, helping users practice communication, confidence, and real-time problem-solving.
+- **E2E Deployment** – All AI features are deployed using an end-to-end infrastructure, ensuring scalability, reliability, and seamless integration across the platform.
+
+These integrations ensure Witeso goes beyond static content — providing mentorship, feedback, and preparation that truly guides learners toward employment.
+
 
 ---
 
