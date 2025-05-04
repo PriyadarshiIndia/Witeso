@@ -3,8 +3,87 @@
 Witeso is an all-in-one upskilling platform designed to empower users by providing a comprehensive suite of tools and learning modules to master technical and non-technical skills. Whether you're preparing for technical interviews, improving your coding skills, or honing your web development abilities, Witeso offers everything you need in one centralized platform.
 
 ---
+## 🎥 Demonstration of the Project
 
-## Table of Contents
+Watch a full walkthrough of the Witeso platform on YouTube:  
+[![Witeso Project Demo](https://img.youtube.com/vi/yEDYBYsG_9c/0.jpg)](https://www.youtube.com/watch?v=yEDYBYsG_9c)
+
+---
+
+## 🌍 The Why Behind Witeso
+
+In a small village in Uttar Pradesh, lives Anjali — a 20-year-old girl from a low-income household. Her father’s health doesn't allow him to work anymore, and her younger siblings are still in school. She isn’t dreaming of luxury — she’s dreaming of survival.
+
+Anjali wants to become the first earning member of her family. She’s willing to learn any skill — customer service, data entry, teaching, or anything that can help her get hired. But all she finds online are:
+
+1. Unfinished YouTube tutorials  
+2. Irrelevant, overly advanced content  
+3. Confusing courses with no clear job path  
+4. No mentorship, no mock tests, no feedback  
+
+> _She’s not lazy. She’s just lost and confused._
+
+### 🎯 The Problem We’re Solving
+
+Millions of youth — especially women from small towns and rural areas — want to work. But they’re trapped in a maze of:
+
+- ❌ Unstructured learning  
+- ❌ Lack of mentorship  
+- ❌ No clarity on job paths  
+- ❌ Weak resumes, zero interview prep  
+- ❌ No confidence to even apply  
+
+They don’t need motivation — they need direction.
+
+---
+
+## 🌟 What We’re Building — Witeso
+
+Witeso is an AI-powered skilling platform that gives learners everything they need to get skilled and get hired — in one place.
+
+We focus on practical, job-ready skills and real guidance — not just academic theory.
+
+### 🧩 What Witeso Offers:
+
+- ✅ Guided Learning Paths in tech, non-tech, teaching, customer support & more  
+- ✅ AI Mentor for personalized roadmaps and doubts  
+- ✅ Mock Interviews and Job Role Preparation (SDE, Support, Tutor, Data Entry, etc.)  
+- ✅ Resume Builder + AI Reviewer (ATS-friendly)  
+- ✅ Gamified Skill Practice + Progress Tracker  
+- ✅ Cold Email Generator for reaching HRs  
+- ✅ Doubt Solving, Notes, Fun Facts, Flashcards, Editorials  
+- ✅ Witeso Card – Shareable skilling proof for social media and recruiters  
+- ✅ Portfolio Generator – Showcase your full learning journey  
+
+### 👩‍🎓 Our Target Audience:
+
+- Students from Tier-2/3 colleges  
+- Women re-entering or starting careers  
+- Youth in financially challenged families  
+- Anyone overwhelmed by too many unstructured skilling options  
+
+### 💡 Why Witeso (Not Just ChatGPT or YouTube)?
+
+We currently have 140 active users, both from across India and internationally, who were facing the very challenges we've identified — unstructured learning, lack of mentorship, and no clear job paths. By understanding these issues, we've been able to provide them with a free platform that offers structured learning and personal guidance.
+
+Here’s why Witeso stands out:
+
+- **Personalized Learning Paths:** Unlike GPT, which can only provide information, Witeso customizes the learning journey.  
+- **Practical Experience and Feedback:** GPT can answer questions, but Witeso offers mock interviews, skill practice, and real-time feedback.  
+- **Job-Ready Preparation:** With features like ATS-friendly resume builders and portfolio generators, Witeso actively prepares users for real employment.
+
+There are no limits to their growth, and Witeso is helping them upskill in a way that feels personal and tailored to their unique needs.
+
+### 💫 Our Vision
+
+> “To empower every Indian — regardless of background — with a guided path to skill, earn, and rise.”
+
+From any village, any home, any college — now anyone can learn and succeed from home.  
+**No limits. Just learning. Just rising.**
+
+---
+
+## 📑 Table of Contents
 
 - [Features](#features)
 - [Technology Stack](#technology-stack)
@@ -16,134 +95,79 @@ Witeso is an all-in-one upskilling platform designed to empower users by providi
 
 ---
 
-## Features
+## 🚀 Features
 
 ### Comprehensive Learning and Assessment
-- **Company-wise DSA Problems:** Practice data structures and algorithms problems tailored to company-specific requirements.
-- **DSA Sheet:** Access a curated and comprehensive DSA sheet covering essential topics.
-- **Built-in Browser-based Code Runner:** Write, test, and debug your code directly in the browser.
-- **Aptitude Mock Tests:** Prepare with realistic aptitude tests designed to simulate real interview scenarios.
+
+- **Company-wise DSA Problems:** Practice data structures and algorithms tailored to company-specific needs.
+- **DSA Sheet:** A curated, topic-wise collection of DSA questions.
+- **Browser-based Code Runner:** Write and test code directly in the browser.
+- **Aptitude Mock Tests:** Simulate real interview test environments.
 
 ### Career and Professional Development
-- **ATS-friendly Resume Builder:** Create professional resumes optimized for applicant tracking systems.
-- **AI-powered Resume Reviewer:** Get intelligent feedback on your resume using an open-source LLM model (Deepseek) for resume feedback.
-- **HR Email Finder:** Find and validate HR email addresses by checking hiring statuses and ensuring you send your CV to the right person.
-- **Centralized Coding Profile:** Manage and showcase all your coding achievements in one place.
-- **Witeso Card & Sharable Certificates:** Share your progress and achievements with customizable Witeso cards and certificates.
 
-### Gamified Web Development Learning
-- **CSS Games:** Engage in interactive, gamified learning modules to master web development through hands-on practice.
+- **ATS-friendly Resume Builder**
+- **AI-powered Resume Reviewer (using Deepseek LLM)**
+- **HR Email Finder & Verifier**
+- **Centralized Coding Profile Management**
+- **Witeso Card & Shareable Certificates**
+
+### Gamified Learning
+
+- **CSS Games & Challenges:** Learn frontend by playing and building.
 
 ---
 
-## Technology Stack
+## 🛠️ Technology Stack
 
 ### Backend
-- **Flask:** Python web framework for building robust server-side applications.
-- **MongoDB:** NoSQL database for flexible and scalable data storage.
-- **Judge0:** Integrated code judging system for real-time code evaluation.
+
+- **Flask** – Python framework
+- **MongoDB** – NoSQL database
+- **Judge0** – Online code execution engine
 
 ### Frontend
-- **Astro.js:** Modern framework for building fast, optimized, and highly interactive user interfaces.
 
-### Hosting and Authentication
-- **Vercel:** Hosting platform for seamless deployment and scalability.
-- **Google OAuth & Supabase:** Secure and reliable authentication solutions to manage user identities.
+- **Astro.js** – Modern frontend framework
 
-### AI and Open Source Integrations
-- **Deepseek:** Open-source LLM model used for resume feedback, HR email discovery, and analyzing hiring patterns.
+### Hosting & Auth
+
+- **Vercel** – Frontend hosting
+- **Supabase + Google OAuth** – Authentication & user management
+
+### AI Integrations
+
+- **Deepseek LLM** – AI resume review, HR info, and learning insights
 
 ---
 
-## Installation and Setup
+## 🧪 Installation and Setup
 
 ### Prerequisites
+
 - Python 3.7+
-- Node.js and npm (for Astro.js frontend)
-- MongoDB instance (local or cloud-based)
-- Vercel account (for hosting)
-- Supabase account (for authentication)
+- Node.js and npm
+- MongoDB (local/cloud)
+- Supabase account
+- Vercel account
 
-### Steps
+### Clone the Repo
 
-1. **Clone the Repository:**
-   ```bash
-   git clone <URL>
-   cd witeso
-   ```
+```bash
+git clone https://github.com/PriyadarshiIndia/Witeso
+cd witeso
+```
+### Backend Setup
+```bash
+python -m venv venv
+source venv/bin/activate  
+pip install -r requirements.txt
+```
 
-2. **Backend Setup:**
-   - Create a virtual environment and install dependencies:
-     ```bash
-     python -m venv venv
-     source venv/bin/activate  # On Windows use: venv\Scripts\activate
-     pip install -r requirements.txt
-     ```
-   - Configure environment variables (e.g., database URL, OAuth credentials) in a `.env` file.
-   - Run the Flask application:
-     ```bash
-     flask run
-     ```
+### Frontend Setup
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-3. **Frontend Setup:**
-   - Navigate to the frontend directory and install dependencies:
-     ```bash
-     cd frontend
-     npm install
-     npm run dev
-     ```
-   - Configure any necessary environment variables for Astro.js if required.
-
-4. **Deployment:**
-   - Follow Vercel’s documentation to deploy the frontend.
-   - Ensure your backend is deployed and connected to the same environment variables as your local setup.
-
----
-
-## Usage
-
-- **Accessing the Platform:** Open your browser and navigate to the deployed Vercel URL for the frontend.
-- **User Registration and Login:** Use Google OAuth or sign up using Supabase authentication.
-- **Exploring Features:** Navigate through the dashboard to access coding challenges, resume tools, aptitude tests, and gamified learning modules.
-- **Feedback and Resume Tools:** Utilize the integrated AI tools to receive personalized feedback on your resume and improve your application strategy.
-
-## Team Mate
-
-<table>
-<tr>
-
-<td align="center">
-    <a href="https://github.com/PushpenderIndia">
-        <kbd><img src="https://avatars3.githubusercontent.com/PushpenderIndia?size=400" width="100px;" alt=""/></kbd><br />
-        <sub><b>Pushpender Singh</b></sub>
-    </a><br />
-    <a href="https://github.com/PriyadarshiIndia/Witeso/commits?author=PushpenderIndia" title="Code"> :computer: </a> 
-</td>
-
-<td align="center">
-    <a href="https://github.com/PriyadarshiIndia">
-        <kbd><img src="https://avatars3.githubusercontent.com/pri?size=400" width="100px;" alt=""/></kbd><br />
-        <sub><b>Priyadarshi Anand</b></sub>
-    </a><br />
-    <a href="https://github.com/PriyadarshiIndia/Witeso/commits?author=PriyadarshiIndia" title="Code"> :computer: </a> 
-</td>
-
-<td align="center">
-    <a href="https://github.com/khusburai28">
-        <kbd><img src="https://avatars3.githubusercontent.com/khusburai28?size=400" width="100px;" alt=""/></kbd><br />
-        <sub><b>Khusbu Rai</b></sub>
-    </a><br />
-    <a href="https://github.com/PriyadarshiIndia/Witeso/commits?author=khusburai28" title="Code"> :computer: </a> 
-</td>
-</tr>
-</tr>
-</table>
-
-
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
----
-
-Witeso aims to be your one-stop solution for upskilling, interview preparation, and career growth. Enjoy your learning journey and happy coding!
