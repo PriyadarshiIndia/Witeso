@@ -141,7 +141,7 @@ From any village, any home, any college — now anyone can learn and succeed fro
 
 Witeso leverages state-of-the-art AI technologies to provide users with a truly personalized and job-ready upskilling experience:
 
-- **LLaMA** – Powers intelligent resume reviews, generating insightful and role-specific feedback to help users create professional, industry-aligned resumes.
+- **Meta LLaMA Model 4.0** – Powers intelligent resume reviews, generating insightful and role-specific feedback to help users create professional, industry-aligned resumes.
 - **Gemini** – Enables smart learning assistance by generating personalized learning paths, answering user queries, and recommending content tailored to individual goals.
 - **Vapi (Voice Agent)** – Delivers realistic mock interview simulations through voice-based AI, helping users practice communication, confidence, and real-time problem-solving.
 - **E2E Deployment** – All AI features are deployed using an end-to-end infrastructure, ensuring scalability, reliability, and seamless integration across the platform.
