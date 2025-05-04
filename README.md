@@ -148,6 +148,7 @@ These integrations ensure Witeso goes beyond static content — providing mentor
 <div style="display: flex; gap: 10px;">
   <img src="./static/img/arcchitecture.png" alt="Architecture Diagram" width="48%" />
   <img src="./static/img/flow.png" alt="Flowchart" width="48%" />
+  <img src="./static/img/e2e.jpeg" alt="Flowchart" width="48%" />
 </div>
 
 ---
