@@ -145,9 +145,10 @@ Witeso leverages state-of-the-art AI technologies to provide users with a truly 
 - **E2E Deployment** – All AI features are deployed using an end-to-end infrastructure, ensuring scalability, reliability, and seamless integration across the platform.
 
 These integrations ensure Witeso goes beyond static content — providing mentorship, feedback, and preparation that truly guides learners toward employment.
-
-![Architecture Diagram](./static/img/arcchitecture.png)
-![Flowchart ](./static/img/flow.png)
+<div style="display: flex; gap: 10px;">
+  <img src="./static/img/arcchitecture.png" alt="Architecture Diagram" width="48%" />
+  <img src="./static/img/flow.png" alt="Flowchart" width="48%" />
+</div>
 
 ---
 
